@@ -77,6 +77,46 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+.markerPopup {
+  padding: 5px;
+  min-width: 150px;
+}
+.markerPopup h4 {
+  margin: 0 0 5px 0;
+  color: #dc3545;
+  font-size: 14px;
+}
+.markerPopup p {
+  margin: 0 0 10px 0;
+  font-size: 12px;
+  color: #666;
+}
+.popupDirectionsBtn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.2s;
+}
+.popupDirectionsBtn:hover {
+  background-color: #c82333;
+}
+.routePopup {
+  padding: 5px;
+}
+.routePopup h4 {
+  margin: 0 0 5px 0;
+  color: #dc3545;
+  font-size: 14px;
+}
+.routePopup p {
+  margin: 2px 0;
+  font-size: 12px;
+}
 .directionsInfo {
   position: absolute;
   top: 10px;
@@ -92,6 +132,14 @@
   margin: 0 0 8px 0;
   font-size: 16px;
   color: #dc3545;
+  font-weight: 600;
+}
+.directionsSummary {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+.directionsSummary p {
+  margin: 4px 0;
 }
 .clearDirectionsBtn {
   background-color: #dc3545;
@@ -290,6 +338,13 @@
   padding: 12px;
   margin-bottom: 15px;
 }
+.hospitalsListContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid #eee;
+}
 .hospitalCard {
   border-bottom: 1px solid #eee;
   justify-content: space-between;
@@ -369,12 +424,52 @@
   background-color: #c82333;
   transform: translateY(-2px);
 }
-.hospitalsListContainer {
-  max-height: 400px;
+.directionsPanel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  max-height: calc(100% - 20px);
   overflow-y: auto;
-  border-radius: 8px;
-  margin-top: 20px;
-  border: 1px solid #eee;
+}
+.directionsPanel h4 {
+  margin: 0;
+  padding: 10px 15px;
+  background-color: #dc3545;
+  color: white;
+  font-size: 14px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.directionsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.directionStep {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  font-size: 13px;
+  display: flex;
+  flex-direction: column;
+}
+.directionStep:last-child {
+  border-bottom: none;
+}
+.directionText {
+  margin-bottom: 5px;
+}
+.directionDistance,
+.directionTime {
+  font-size: 12px;
+  color: #666;
+}
+.directionDistance {
+  margin-right: 10px;
 }
 .rightColumnContainer {
   flex-direction: column;

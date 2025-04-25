@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import styles from "./InputDesign.module.css";
+import styles from "./BloodDonationPlatform.module.css";
 import TopDonorsSection from "./TopDonorsSection";
 
 function HospitalSection({ onHospitalSelect }) {
@@ -447,7 +447,26 @@ function HospitalSection({ onHospitalSelect }) {
                 <span>{index % 3 === 0 ? "5 units" : "2 units"}</span>
               </div>
             </div>
-            <button className={styles.getDirectionsBtn}>Get Directions</button>
+            <button
+              className={styles.getDirectionsBtn}
+              onClick={(e) => {
+                e.stopPropagation();
+                handleHospitalClick(hospital);
+              }}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                style={{ marginRight: "5px" }}
+              >
+                <polygon points="3 11 22 2 13 21 11 13 3 11" />
+              </svg>
+              Get Directions
+            </button>
           </article>
         ))}
       </div>

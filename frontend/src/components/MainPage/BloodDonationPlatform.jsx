@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./InputDesign.module.css";
+import styles from "./BloodDonationPlatform.module.css";
 import dynamic from "next/dynamic";
 import TopDonorsSection from "./TopDonorsSection";
 import HospitalSection from "./HospitalSection";
@@ -18,7 +18,7 @@ const LeafletMap = dynamic(() => import("./LeafletMap"), {
   ),
 });
 
-function InputDesign() {
+function BloodDonationPlatform() {
   const [selectedHospital, setSelectedHospital] = useState(null);
 
   // Get all hospitals from HospitalSection for the map
@@ -210,8 +210,11 @@ function InputDesign() {
       <div className={styles.topBorder} />
 
       {/* Map with directions */}
-      <LeafletMap selectedHospital={selectedHospital} hospitals={hospitals} />
-
+      <LeafletMap
+        selectedHospital={selectedHospital}
+        hospitals={hospitals}
+        onHospitalSelect={setSelectedHospital}
+      />
       <section className={styles.contentGrid}>
         <HospitalSection onHospitalSelect={setSelectedHospital} />
         <div className={styles.rightColumnContainer}>
@@ -223,4 +226,4 @@ function InputDesign() {
   );
 }
 
-export default InputDesign;
+export default BloodDonationPlatform;

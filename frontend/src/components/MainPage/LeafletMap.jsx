@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import styles from "./InputDesign.module.css";
+import styles from "./BloodDonationPlatform.module.css";
 
 // This component will be loaded dynamically on the client side
-function LeafletMap({ selectedHospital, hospitals }) {
+function LeafletMap({ selectedHospital, hospitals, onHospitalSelect }) {
   const mapRef = useRef(null);
   const leafletMapRef = useRef(null);
   const markersLayerRef = useRef(null);
@@ -11,6 +11,7 @@ function LeafletMap({ selectedHospital, hospitals }) {
   const [userLocation, setUserLocation] = useState(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [locationStatus, setLocationStatus] = useState("loading");
+  const [directions, setDirections] = useState(null);
 
   // Initialize the map when the component mounts
   useEffect(() => {
@@ -118,10 +119,42 @@ function LeafletMap({ selectedHospital, hospitals }) {
             iconSize: [24, 24],
           });
 
-          // Add marker
-          L.marker([latitude, longitude], { icon: hospitalIcon })
-            .addTo(markersLayerRef.current)
-            .bindPopup(`<b>${name}</b><br>${hospital.location}`);
+          // Add marker with custom popup
+          const marker = L.marker([latitude, longitude], {
+            icon: hospitalIcon,
+          }).addTo(markersLayerRef.current);
+
+          // Create custom popup content with Get Directions button
+          const popupContent = document.createElement("div");
+          popupContent.className = styles.markerPopup;
+
+          const title = document.createElement("h4");
+          title.textContent = name;
+          popupContent.appendChild(title);
+
+          const location = document.createElement("p");
+          location.textContent = hospital.location;
+          popupContent.appendChild(location);
+
+          const directionsBtn = document.createElement("button");
+          directionsBtn.className = styles.popupDirectionsBtn;
+          directionsBtn.textContent = "Get Directions";
+          directionsBtn.onclick = (e) => {
+            e.preventDefault();
+            if (onHospitalSelect) {
+              onHospitalSelect(hospital);
+            }
+            marker.closePopup();
+          };
+          popupContent.appendChild(directionsBtn);
+
+          marker.bindPopup(popupContent);
+
+          // Add click handler to marker
+          marker.on("click", () => {
+            // Open popup first
+            marker.openPopup();
+          });
         });
       } catch (error) {
         console.error("Error adding hospital markers:", error);
@@ -131,7 +164,7 @@ function LeafletMap({ selectedHospital, hospitals }) {
     if (hospitals && hospitals.length > 0) {
       addHospitalMarkers();
     }
-  }, [hospitals, mapLoaded]);
+  }, [hospitals, mapLoaded, onHospitalSelect]);
 
   // Show directions when a hospital is selected
   useEffect(() => {
@@ -154,7 +187,10 @@ function LeafletMap({ selectedHospital, hospitals }) {
           routingControlRef.current = null;
         }
 
-        // Create new routing control
+        // Reset directions
+        setDirections(null);
+
+        // Create new routing control with visible itinerary
         routingControlRef.current = L.Routing.control({
           waypoints: [
             L.latLng(userLocation.lat, userLocation.lng),
@@ -163,6 +199,7 @@ function LeafletMap({ selectedHospital, hospitals }) {
           routeWhileDragging: false,
           showAlternatives: true,
           fitSelectedRoutes: true,
+          show: false, // Hide default instructions panel
           lineOptions: {
             styles: [{ color: "#dc3545", opacity: 0.7, weight: 6 }],
           },
@@ -197,12 +234,31 @@ function LeafletMap({ selectedHospital, hospitals }) {
             .setLatLng([selectedHospital.latitude, selectedHospital.longitude])
             .setContent(
               `
-              <b>${selectedHospital.name}</b><br>
-              Distance: ${distance} km<br>
-              Estimated time: ${time} minutes
+              <div class="${styles.routePopup}">
+                <h4>${selectedHospital.name}</h4>
+                <p>Distance: ${distance} km</p>
+                <p>Estimated time: ${time} minutes</p>
+              </div>
             `,
             )
             .openOn(leafletMapRef.current);
+
+          // Extract turn-by-turn directions
+          const instructions = routes[0].instructions.map((instruction) => ({
+            text: instruction.text,
+            distance: instruction.distance,
+            time: instruction.time,
+            direction: instruction.direction,
+            road: instruction.road,
+          }));
+
+          setDirections({
+            summary: {
+              distance,
+              time,
+            },
+            instructions,
+          });
         });
       } catch (error) {
         console.error("Error showing directions:", error);
@@ -211,8 +267,18 @@ function LeafletMap({ selectedHospital, hospitals }) {
 
     if (selectedHospital) {
       showDirections();
+    } else {
+      setDirections(null);
     }
   }, [selectedHospital, userLocation, mapLoaded]);
+
+  // Format time for directions
+  const formatTime = (seconds) => {
+    if (seconds < 60) {
+      return `${seconds} sec`;
+    }
+    return `${Math.round(seconds / 60)} min`;
+  };
 
   return (
     <section className={styles.mapContainer}>
@@ -240,11 +306,21 @@ function LeafletMap({ selectedHospital, hospitals }) {
       {selectedHospital && (
         <div className={styles.directionsInfo}>
           <h3>Directions to {selectedHospital.name}</h3>
+          {directions && (
+            <div className={styles.directionsSummary}>
+              <p>Distance: {directions.summary.distance} km</p>
+              <p>Estimated time: {directions.summary.time} minutes</p>
+            </div>
+          )}
           <button
             className={styles.clearDirectionsBtn}
-            onClick={() =>
-              window.dispatchEvent(new CustomEvent("clearHospitalSelection"))
-            }
+            onClick={() => {
+              if (onHospitalSelect) {
+                onHospitalSelect(null);
+              } else {
+                window.dispatchEvent(new CustomEvent("clearHospitalSelection"));
+              }
+            }}
           >
             Clear Directions
           </button>
@@ -252,6 +328,29 @@ function LeafletMap({ selectedHospital, hospitals }) {
       )}
 
       <div ref={mapRef} className={styles.leafletMap}></div>
+
+      {directions && (
+        <div className={styles.directionsPanel}>
+          <h4>Turn-by-Turn Directions</h4>
+          <ul className={styles.directionsList}>
+            {directions.instructions.map((instruction, index) => (
+              <li key={index} className={styles.directionStep}>
+                <span className={styles.directionText}>{instruction.text}</span>
+                {instruction.distance > 0 && (
+                  <span className={styles.directionDistance}>
+                    {(instruction.distance / 1000).toFixed(1)} km
+                  </span>
+                )}
+                {instruction.time > 0 && (
+                  <span className={styles.directionTime}>
+                    {formatTime(instruction.time)}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import styles from "./InputDesign.module.css";
+import styles from "./BloodDonationPlatform.module.css";
 
 function ActivitySection() {
   const [recentActivities] = useState([

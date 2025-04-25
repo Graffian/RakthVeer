@@ -1,5 +1,5 @@
 
-import InputDesign from './components/MainPage/InputDesign'
+import BloodDonationPlatform from './components/MainPage/BloodDonationPlatform'
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <InputDesign/>
+      <BloodDonationPlatform/>
     </>
   )
 }
