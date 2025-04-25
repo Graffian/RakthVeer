@@ -1,0 +1,340 @@
+.primaryButton:hover {
+  background-color: #a41e25;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px #be232b4d;
+}
+
+.secondaryButton:hover {
+  background-color: #fff5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px #be232b33;
+}
+
+.container {
+  background-color: #fff;
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  transition: background-color 0.3s ease;
+}
+
+.header {
+  background-color: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  padding: 20px 0;
+  box-shadow: 0 2px 4px #0000001a;
+  transition:
+    box-shadow 0.3s ease,
+    border-bottom 0.3s ease;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.headerLeft,
+.headerRight {
+  flex: 1;
+}
+
+.headerRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.languageToggle {
+  background-color: #fff;
+  color: #be232b;
+  border: 1px solid #be232b;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.languageToggle:hover {
+  background-color: #fff5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(190, 35, 43, 0.2);
+}
+
+.languageToggle {
+  background-color: #fff;
+  color: #be232b;
+  border: 1px solid #be232b;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.languageToggle:hover {
+  background-color: #fff5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(190, 35, 43, 0.2);
+}
+
+.logoContainer:hover {
+  transform: scale(1.02);
+}
+
+.logo {
+  aspect-ratio: 1;
+  object-fit: cover;
+  object-position: center;
+  width: auto;
+  height: 60px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: rotate(5deg);
+}
+
+.brandName {
+  color: #be232b;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease;
+}
+
+.brandName:hover {
+  text-shadow: 1px 1px 2px rgba(190, 35, 43, 0.3);
+}
+
+.mainContent {
+  background: linear-gradient(135deg, #fff5f5 0%, #fff 100%);
+  flex: 1;
+  padding: 60px 20px;
+}
+
+.heroSection {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.mainHeading {
+  color: #be232b;
+  margin-bottom: 20px;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  transition:
+    transform 0.5s ease,
+    color 0.3s ease;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.subHeading {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 32px;
+  transition:
+    transform 0.5s ease,
+    color 0.3s ease;
+  animation: fadeInDown 1s ease-out;
+}
+
+.description {
+  color: #666;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  font-size: 20px;
+  line-height: 1.6;
+  transition: opacity 0.5s ease;
+  animation: fadeIn 1.2s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.infoCardContainer {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.infoCard {
+  text-align: left;
+  background-color: #fff5f5;
+  border-radius: 8px;
+  max-width: 300px;
+  padding: 20px;
+  box-shadow: 0 2px 4px #0000001a;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.infoCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(190, 35, 43, 0.15);
+  background-color: #fff0f0;
+}
+
+.infoCardTitle {
+  color: #be232b;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.infoCardList {
+  color: #666;
+  padding-left: 20px;
+  font-size: 16px;
+}
+
+.buttonContainer {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+  display: flex;
+}
+
+/* Animation classes for intersection observer */
+.infoCard,
+.buttonContainer button {
+  opacity: 1; /* Changed from 0 to ensure buttons are visible */
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.builder04306da5f7b54d27a2d25cd373848428 {
+  color: #fff;
+  cursor: pointer;
+  background-color: #be232b;
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  box-shadow: 0 4px 6px #be232b33;
+  position: relative;
+  overflow: hidden;
+}
+
+.builder04306da5f7b54d27a2d25cd373848428::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.builder04306da5f7b54d27a2d25cd373848428:hover::after {
+  transform: translateX(0);
+}
+
+.buttonSecondaryText {
+  font-size: 14px;
+}
+
+.builderE1864755c48a45a2882958d48160f579 {
+  color: #be232b;
+  cursor: pointer;
+  background-color: #fff;
+  border: 2px solid #be232b;
+  border-radius: 8px;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 40px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  box-shadow: 0 4px 6px #be232b1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.builderE1864755c48a45a2882958d48160f579::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(190, 35, 43, 0.05);
+  transform: translateX(-100%);
+  transition: transform 0.4s ease;
+}
+
+.builderE1864755c48a45a2882958d48160f579:hover::after {
+  transform: translateX(0);
+}
+
+.footer {
+  color: #fff;
+  text-align: center;
+  background-color: #2c3e50;
+  padding: 20px 0;
+  transition: background-color 0.3s ease;
+}
+
+.footer:hover {
+  background-color: #34495e;
+}
+
+.footerText {
+  margin: 0;
+  transition: opacity 0.3s ease;
+}
+
+.footer:hover .footerText {
+  opacity: 0.9;
+}
