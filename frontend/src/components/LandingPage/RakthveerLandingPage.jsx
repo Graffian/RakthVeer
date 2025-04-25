@@ -54,7 +54,9 @@ function RakthveerLandingPage() {
       <main className={styles.mainContent}>
         <section className={styles.heroSection}>
           <h2 className={styles.mainHeading}>Welcome to Rakthveer</h2>
-          <h3 className={styles.subHeading}>Welcome to Raktveer</h3>
+          <h3 className={styles.subHeading}>
+            Saving Lives, One Drop at a Time
+          </h3>
           <p className={styles.description}>
             Empowering rural communities through accessible blood donation. Our
             mission is to connect donors with those in need, bringing
