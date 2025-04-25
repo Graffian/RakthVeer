@@ -1,5 +1,5 @@
 
-import RakthVeerLandingPage from "./components/LandingPage/RakthveerLandingPage"
+import InputDesign from './components/DonorLoginPage/InputDesign'
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <RakthVeerLandingPage/>
+      <InputDesign/>
     </>
   )
 }
