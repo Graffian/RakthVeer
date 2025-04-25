@@ -30,29 +30,40 @@
 
 .headerContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
-}
-
-.headerLeft,
-.headerRight {
-  flex: 1;
-}
-
-.headerRight {
-  display: flex;
-  justify-content: flex-end;
+  position: relative;
 }
 
 .logoContainer {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin: 0 auto;
 }
 
+.languageToggle {
+  position: absolute;
+  right: 20px;
+  background-color: #fff;
+  color: #be232b;
+  border: 1px solid #be232b;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.languageToggle:hover {
+  background-color: #fff5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(190, 35, 43, 0.2);
+}
 .languageToggle {
   background-color: #fff;
   color: #be232b;
@@ -252,32 +263,18 @@
   background-color: #be232b;
   border: none;
   border-radius: 8px;
-  align-items: center;
-  gap: 10px;
   padding: 20px 40px;
   font-size: 18px;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: flex;
+  display: inline-block;
   box-shadow: 0 4px 6px #be232b33;
-  position: relative;
-  overflow: hidden;
 }
 
-.builder04306da5f7b54d27a2d25cd373848428::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateX(-100%);
-  transition: transform 0.4s ease;
-}
-
-.builder04306da5f7b54d27a2d25cd373848428:hover::after {
-  transform: translateX(0);
+.builder04306da5f7b54d27a2d25cd373848428:hover {
+  background-color: #a41e25;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px #be232b4d;
 }
 
 .buttonSecondaryText {
@@ -290,32 +287,18 @@
   background-color: #fff;
   border: 2px solid #be232b;
   border-radius: 8px;
-  align-items: center;
-  gap: 10px;
   padding: 20px 40px;
   font-size: 18px;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  display: flex;
+  display: inline-block;
   box-shadow: 0 4px 6px #be232b1a;
-  position: relative;
-  overflow: hidden;
 }
 
-.builderE1864755c48a45a2882958d48160f579::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(190, 35, 43, 0.05);
-  transform: translateX(-100%);
-  transition: transform 0.4s ease;
-}
-
-.builderE1864755c48a45a2882958d48160f579:hover::after {
-  transform: translateX(0);
+.builderE1864755c48a45a2882958d48160f579:hover {
+  background-color: #fff5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px #be232b33;
 }
 
 .footer {

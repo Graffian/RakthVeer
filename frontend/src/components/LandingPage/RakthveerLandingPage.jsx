@@ -12,11 +12,6 @@ function RakthveerLandingPage() {
   const toggleLanguage = () => {
     setIsEnglish((prev) => !prev);
   };
-  const [language, setLanguage] = useState("en");
-
-  const toggleLanguage = () => {
-    setLanguage((prevLang) => (prevLang === "en" ? "hi" : "en"));
-  };
 
   const donorBenefits = [
     "Free health checkup with donation",
@@ -31,22 +26,6 @@ function RakthveerLandingPage() {
     "Blood storage facilities",
     "24/7 support available",
   ];
-
-  // Translations for headings and description
-  const translations = {
-    mainHeading: {
-      en: "Welcome to Rakthveer",
-      hi: "रक्तवीर में आपका स्वागत है",
-    },
-    subHeading: {
-      en: "Welcome to Raktveer",
-      hi: "रक्तवीर में आपका स्वागत है",
-    },
-    description: {
-      en: "Empowering rural communities through accessible blood donation. Our mission is to connect donors with those in need, bringing life-saving services to every citizen.",
-      hi: "सुलभ रक्तदान के माध्यम से ग्रामीण समुदायों को सशक्त बनाना। हमारा मिशन दाताओं को जरूरतमंदों से जोड़ना है, जिससे हर नागरिक को जीवन रक्षक सेवाएं मिल सकें।",
-    },
-  };
 
   // Add animation classes to elements when they come into view
   React.useEffect(() => {
@@ -74,30 +53,19 @@ function RakthveerLandingPage() {
       <Header toggleLanguage={toggleLanguage} />
       <main className={styles.mainContent}>
         <section className={styles.heroSection}>
-          <h2 className={styles.mainHeading}>
-            {translations.mainHeading[language]}
-          </h2>
-          <h3 className={styles.subHeading}>
-            {translations.subHeading[language]}
-          </h3>
+          <h2 className={styles.mainHeading}>Welcome to Rakthveer</h2>
+          <h3 className={styles.subHeading}>Welcome to Raktveer</h3>
           <p className={styles.description}>
-            {translations.description[language]}
+            Empowering rural communities through accessible blood donation. Our
+            mission is to connect donors with those in need, bringing
+            life-saving services to every citizen.
           </p>
 
           <div className={styles.infoCardContainer}>
+            <InfoCard title="For Rural Donors" listItems={donorBenefits} />
             <InfoCard
-              title={
-                language === "en" ? "For Rural Donors" : "ग्रामीण दाताओं के लिए"
-              }
-              listItems={donorBenefits}
-              language={language}
-            />
-            <InfoCard
-              title={
-                language === "en" ? "For Organizations" : "संस्थाओं के लिए"
-              }
+              title="For Organizations"
               listItems={organizationBenefits}
-              language={language}
             />
           </div>
 

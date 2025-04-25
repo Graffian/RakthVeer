@@ -6,9 +6,6 @@ function Header({ toggleLanguage }) {
   return (
     <header className={styles.header}>
       <div className={styles.headerContainer}>
-        <div className={styles.headerLeft}>
-          {/* This div is intentionally left empty to maintain the three-column layout for centering */}
-        </div>
         <div className={styles.logoContainer}>
           <img
             alt="Raktveer Logo"
@@ -17,15 +14,13 @@ function Header({ toggleLanguage }) {
           />
           <h1 className={styles.brandName}>Rakthveer</h1>
         </div>
-        <div className={styles.headerRight}>
-          <button
-            onClick={toggleLanguage}
-            className={styles.languageToggle}
-            aria-label="Toggle Language"
-          >
-            Translate
-          </button>
-        </div>
+        <button
+          onClick={toggleLanguage}
+          className={styles.languageToggle}
+          aria-label="Toggle Language"
+        >
+          Translate
+        </button>
       </div>
     </header>
   );
