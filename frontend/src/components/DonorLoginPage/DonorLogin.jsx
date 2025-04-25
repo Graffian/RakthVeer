@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import styles from "./InputDesign.module.css";
+import styles from "./DonorLogin.module.css";
 
 // Reusable form field component
 const FormField = ({ label, type, value, onChange, description }) => {
@@ -176,7 +176,7 @@ const LoginForm = () => {
   );
 };
 
-function InputDesign() {
+function DonorLogin() {
   return (
     <main className={styles.mainContainer}>
       <div className={styles.div}>
@@ -187,4 +187,4 @@ function InputDesign() {
   );
 }
 
-export default InputDesign;
+export default DonorLogin;

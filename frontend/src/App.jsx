@@ -1,5 +1,5 @@
 
-import InputDesign from './components/DonorLoginPage/InputDesign'
+import DonorLogin from './components/DonorLoginPage/DonorLogin'
 import './App.css'
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
 
   return (
     <>
-      <InputDesign/>
+      <DonorLogin/>
     </>
   )
 }
