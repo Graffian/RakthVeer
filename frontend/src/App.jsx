@@ -1,13 +1,14 @@
 
-import BloodDonationPlatform from './components/MainPage/BloodDonationPlatform'
+// import DonorLogin from './components/MainPage/DonorLogin'
 import './App.css'
+import OrgLogin from './components/OrgLogin/InputDesign'
 
 function App() {
 
 
   return (
     <>
-      <BloodDonationPlatform/>
+      <OrgLogin/>
     </>
   )
 }

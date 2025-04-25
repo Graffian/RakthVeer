@@ -1,0 +1,387 @@
+.inputField,
+.textareaField,
+.pincodeField {
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.inputField:focus,
+.textareaField:focus,
+.pincodeField:focus {
+  border-color: #be232b;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(190, 35, 43, 0.1);
+}
+.submitButton:hover {
+  background-color: #961e1b;
+}
+.pageContainer {
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+.contentLayout {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 30px;
+}
+
+.sidebarContainer {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.mainContainer {
+  flex-grow: 1;
+}
+
+@media (width<=768px) {
+  .contentLayout {
+    flex-direction: column;
+  }
+
+  .sidebarContainer {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+@media (width<=640px) {
+  .pageContainer {
+    padding: 20px 10px;
+  }
+}
+.formContainer {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px #0000001a;
+}
+
+.orgTypeContainer {
+  background-color: #f8d7da;
+  border-radius: 8px;
+  padding: 25px 30px;
+  box-shadow: 0 2px 6px #0000001a;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (width<=640px) {
+  .orgTypeContainer {
+    padding: 25px 20px;
+  }
+}
+
+.orgTypeTitle {
+  color: #333;
+  font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-family: Arial, sans-serif;
+}
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.radioLabel:hover {
+  background-color: rgba(190, 35, 43, 0.05);
+}
+
+.radioInput {
+  margin-right: 10px;
+  accent-color: #be232b;
+  width: 18px;
+  height: 18px;
+  transition: transform 0.2s ease;
+}
+
+.radioLabel:hover .radioInput {
+  transform: scale(1.1);
+}
+
+.radioText {
+  font-size: 16px;
+  color: #333;
+}
+
+.orgTypeDescription {
+  margin-top: 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: opacity 0.3s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.orgTypeInfo {
+  margin-top: auto;
+  padding-top: 30px;
+  border-top: 1px solid #eee;
+  font-size: 14px;
+  color: #666;
+}
+
+.orgTypeInfoTitle {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.orgTypeInfoList {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.orgTypeInfoList li {
+  margin-bottom: 8px;
+}
+.headerContainer {
+  text-align: center;
+  background-color: #fff;
+  border-bottom: 1px solid #0000001a;
+  padding: 25px 20px;
+  box-shadow: 0 2px 4px #0000000d;
+}
+.headerTitle {
+  color: #7f0210;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+}
+.formContent {
+  padding: 40px 30px;
+  animation: fadeInForm 0.5s ease;
+}
+
+@keyframes fadeInForm {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (width<=640px) {
+  .formContent {
+    padding: 25px 20px;
+  }
+}
+.errorMessage {
+  color: #dc3545;
+  background-color: #dc35451a;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-2px);
+  }
+  40%,
+  60% {
+    transform: translateX(1px);
+  }
+}
+.fieldGroup {
+  margin-bottom: 20px;
+}
+.fieldLabel {
+  color: #333;
+  margin-bottom: 8px;
+  font-weight: 500;
+  display: block;
+}
+.inputField {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+.textareaField {
+  resize: vertical;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+.pincodeField {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 200px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+}
+
+/* Add specific styles for number inputs */
+input[type="number"].pincodeField {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+/* Remove spinner buttons in Chrome, Safari, Edge, Opera */
+input[type="number"].pincodeField::-webkit-outer-spin-button,
+input[type="number"].pincodeField::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.fileUploadGroup {
+  margin-bottom: 30px;
+}
+.fileInput {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s ease;
+}
+
+.fileInput:focus {
+  border-color: #be232b;
+  outline: none;
+}
+.fileHelpText {
+  color: #666;
+  margin-top: 4px;
+  font-size: 12px;
+}
+.customFileUpload {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: Arial, sans-serif;
+  margin-right: 10px;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.customFileUpload:hover {
+  background-color: #f0f0f0;
+  border-color: #be232b;
+}
+.filePreviewContainer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.filePreview {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 4px;
+  margin-right: 10px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f8f8;
+}
+.filePreviewIcon {
+  font-size: 20px;
+  color: #666;
+}
+.filePreviewName {
+  font-size: 14px;
+  color: #333;
+  word-break: break-all;
+}
+.submitButton {
+  color: #fff;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 200px;
+  margin-top: 20px;
+  padding: 12px 28px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.submitButton:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.submitButton:hover:after {
+  transform: translateX(100%);
+}
