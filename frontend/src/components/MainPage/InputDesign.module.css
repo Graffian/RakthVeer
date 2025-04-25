@@ -1,0 +1,528 @@
+.builder8dd3a2832d5d43eb9529e7352f6b4d5d:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px #0003;
+}
+.builder535ca9ad14374e178579f4f6bf309c97:hover {
+  background-color: #fff5f5;
+  transition: background-color 0.3s;
+}
+.builder7cc7c733e4b5488289b3d0f33675c1d2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px #0000001a;
+}
+.builder72850d50a17d4ea4984989eb002ca00a:hover {
+  background-color: #ab0e17;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px #0003;
+}
+.mainContainer {
+  background-color: #fff;
+  background-image: url(https://eraktkosh.mohfw.gov.in/BLDAHIMS/bloodbank/transactions/raktbot/static/sc.png);
+  font-family: oswald, Montserrat, sans-serif;
+}
+.topBorder {
+  z-index: 999;
+  background-image: linear-gradient(90deg, #ef473a, #cb2d3e);
+  width: 100%;
+  height: 1px;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.mapContainer {
+  background-color: #f5f5f5;
+  width: 100%;
+  height: 40vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+.leafletMap {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.mapLoadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 40vh;
+  background-color: #f5f5f5;
+}
+.userLocationMarker {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #4285f4;
+  border: 3px solid white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+.hospitalMarker {
+  width: 24px;
+  height: 24px;
+  background-color: #dc3545;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+.hospitalMarker::after {
+  content: "+";
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.directionsInfo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 10px 15px;
+  border-radius: 4px;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+}
+.directionsInfo h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #dc3545;
+}
+.clearDirectionsBtn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.clearDirectionsBtn:hover {
+  background-color: #c82333;
+}
+.mapOverlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+  z-index: 10;
+  max-width: 80%;
+}
+.locationInfo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  z-index: 10;
+}
+.contentGrid {
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  display: grid;
+}
+@media (width<=991px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 20px;
+  }
+}
+@media (width<=640px) {
+  .contentGrid {
+    gap: 20px;
+    padding: 15px;
+  }
+}
+.leftColumnContainer {
+  background-color: #fff;
+  border-radius: 12px;
+  height: fit-content;
+  padding: 30px;
+  box-shadow: 0 4px 12px #00000014;
+}
+.topDonorsContainer {
+  background-color: #fff5f5;
+  border-left: 4px solid #ea2f2c;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.sectionTitle {
+  color: #ea2f2c;
+  margin-bottom: 15px;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 1.5rem;
+}
+.donorsScrollContainer {
+  gap: 15px;
+  padding-bottom: 10px;
+  display: flex;
+  overflow-x: auto;
+}
+.donorCard {
+  background-color: #fff;
+  border-radius: 8px;
+  min-width: 200px;
+  padding: 15px;
+  box-shadow: 0 2px 4px #0000001a;
+}
+.donorName {
+  color: #ea2f2c;
+  margin-bottom: 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.donorInfo {
+  color: #666;
+}
+.donorStats {
+  color: #666;
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+.reliabilityBadge {
+  color: #fff;
+  background-color: #28a745;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+}
+.requestsTitle {
+  color: #ea2f2c;
+  margin-bottom: 20px;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 1.5rem;
+}
+.requestFormContainer {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 2px 4px #0000001a;
+}
+.formTitle {
+  color: #ea2f2c;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.requestForm {
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  display: grid;
+}
+@media (width<=640px) {
+  .requestForm {
+    grid-template-columns: 1fr;
+  }
+}
+.formInput,
+.formSelect {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 14px;
+}
+.fullWidthInput {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  grid-column: 1/-1;
+  padding: 10px;
+  font-size: 14px;
+}
+.formTextarea {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  grid-column: 1/-1;
+  min-height: 80px;
+  padding: 10px;
+  font-size: 14px;
+}
+.submitButton {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.submitButton:disabled {
+  background-color: #dc354580;
+  cursor: not-allowed;
+}
+.successMessage {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+.errorMessage {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+.hospitalCard {
+  border-bottom: 1px solid #eee;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  min-height: 100px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.hospitalCard:hover {
+  background-color: #fff5f5;
+}
+@media (width<=991px) {
+  .hospitalCard {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+.hospitalName {
+  color: #ea2f2c;
+  word-break: break-word;
+  margin: 0;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+.hospitalLocation {
+  color: #666;
+  margin: 8px 0 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.hospitalStatusContainer {
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+.statusWrapper {
+  flex-direction: column;
+  gap: 5px;
+  display: flex;
+}
+.bloodNeedBadge {
+  color: #fff;
+  background-color: #ea2f2c;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.urgencyBadge {
+  color: #fff;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+}
+.unitsInfo {
+  color: #666;
+  font-size: 0.8rem;
+}
+.getDirectionsBtn {
+  align-self: flex-end;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-top: 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.getDirectionsBtn:hover {
+  background-color: #c82333;
+  transform: translateY(-2px);
+}
+.hospitalsListContainer {
+  max-height: 400px;
+  overflow-y: auto;
+  border-radius: 8px;
+  margin-top: 20px;
+  border: 1px solid #eee;
+}
+.rightColumnContainer {
+  flex-direction: column;
+  gap: 30px;
+  display: flex;
+}
+.requestsContainer {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px #00000014;
+}
+.requestCard {
+  background-color: #fff;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  padding: 20px;
+  transition: all 0.2s;
+  overflow: hidden;
+  box-shadow: 0 2px 4px #0000000d;
+}
+.requestName {
+  color: #ea2f2c;
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.requestInfoRow {
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+  display: flex;
+}
+.requestBloodType {
+  color: #212529;
+  margin: 0;
+  font-weight: 500;
+}
+.distanceBadge {
+  color: #ea2f2c;
+  background-color: #fff5f5;
+  border-radius: 12px;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+}
+.requestAge {
+  color: #212529;
+  margin: 5px 0;
+  font-weight: 500;
+}
+.requestActions {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  display: flex;
+}
+.urgencyLabel {
+  color: #fff;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 0.8rem;
+  display: inline-block;
+}
+.connectButton {
+  color: #fff;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: #be232b;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.3s;
+}
+.activityContainer {
+  background-color: #fff;
+  border-radius: 8px;
+  flex: 1;
+  max-height: calc(100vh - 100px);
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px #0000001a;
+}
+.activityTitle {
+  color: #ea2f2c;
+  margin-bottom: 20px;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 1.5rem;
+}
+.activitiesList {
+  flex-direction: column;
+  gap: 15px;
+  display: flex;
+}
+.activityCard {
+  background-color: #fff5f5;
+  border-left: 4px solid #ea2f2c;
+  border-radius: 4px;
+  padding: 15px;
+}
+.activityHeading {
+  margin: 0 0 5px;
+  font-weight: 500;
+}
+.activityDescription {
+  color: #666;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.activityTime {
+  color: #888;
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+}
+.campsTitle {
+  color: #ea2f2c;
+  margin: 30px 0 20px;
+  font-family: oswald, Montserrat, sans-serif;
+  font-size: 1.5rem;
+}
+.campsList {
+  flex-direction: column;
+  gap: 15px;
+  display: flex;
+}
+.campCard {
+  background-color: #f8f9fa;
+  border-left: 4px solid #ea2f2c;
+  border-radius: 6px;
+  padding: 15px;
+}
+.campName {
+  margin: 0 0 5px;
+  font-weight: 500;
+}
+.campLocation {
+  color: #666;
+  margin: 0;
+  font-size: 0.9rem;
+}
+.campDate {
+  color: #ea2f2c;
+  margin: 5px 0 0;
+  font-size: 0.8rem;
+}

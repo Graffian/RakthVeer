@@ -2,27 +2,17 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./DonorLogin.module.css";
 
-// Reusable form field component
-const FormField = ({ label, type, value, onChange, description }) => {
-  return (
-    <div className={styles.formField}>
-      <label className={styles.label}>{label}</label>
-      <input
-        className={`${styles.input} ${type === "tel" ? styles.builderB9a4be3f78fa4822a6de17fa7abe0706 : styles.builderCca50e4d20f84267b82e1a2cb6345adb}`}
-        type={type}
-        value={value}
-        onInput={onChange}
-      />
-      {description && <p className={styles.fieldDescription}>{description}</p>}
-    </div>
-  );
-};
-
 // Webcam section component
-const WebcamSection = () => {
+const WebcamSection = ({
+  capturedImage,
+  setCapturedImage,
+  uploadStatus,
+  uploadMessage,
+  setUploadStatus,
+  setUploadMessage,
+}) => {
   const videoRef = useRef(null);
   const canvasRef = useRef(null);
-  const [capturedImage, setCapturedImage] = useState(null);
   const [cameraActive, setCameraActive] = useState(true);
 
   useEffect(() => {
@@ -39,6 +29,8 @@ const WebcamSection = () => {
         }
       } catch (err) {
         console.error("Error accessing webcam:", err);
+        setUploadMessage("Could not access camera. Please check permissions.");
+        setUploadStatus("error");
       }
     };
 
@@ -51,7 +43,7 @@ const WebcamSection = () => {
         stream.getTracks().forEach((track) => track.stop());
       }
     };
-  }, [cameraActive]);
+  }, [cameraActive, setUploadMessage, setUploadStatus]);
 
   const captureImage = () => {
     if (videoRef.current && canvasRef.current) {
@@ -70,16 +62,65 @@ const WebcamSection = () => {
       const imageDataUrl = canvas.toDataURL("image/png");
       setCapturedImage(imageDataUrl);
       setCameraActive(false);
+      setUploadStatus("idle");
+      setUploadMessage("");
     }
   };
 
   const resetCamera = () => {
     setCapturedImage(null);
     setCameraActive(true);
+    setUploadStatus("idle");
+    setUploadMessage("");
+  };
+
+  const uploadImageToBackend = async () => {
+    if (!capturedImage) {
+      setUploadMessage("No image captured. Please take a photo first.");
+      setUploadStatus("error");
+      return;
+    }
+
+    try {
+      setUploadStatus("loading");
+      setUploadMessage("Uploading image for verification...");
+
+      // Replace with your actual API endpoint
+      const apiUrl = "https://your-api-endpoint.com/upload-image";
+
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          image: capturedImage,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      setUploadStatus("success");
+      setUploadMessage(
+        "Image uploaded successfully! Verification in progress.",
+      );
+
+      // You can handle the response data here if needed
+      console.log("Upload successful:", data);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      setUploadStatus("error");
+      setUploadMessage("Failed to upload image. Please try again.");
+    }
   };
 
   return (
-    <section className={styles.webcamSection}>
+    <section className={styles.div2}>
       <h3 className={styles.sectionTitle}>Identity Verification</h3>
       <p className={styles.sectionDescription}>
         Please look directly at the camera for identity verification. Your photo
@@ -105,83 +146,342 @@ const WebcamSection = () => {
           )
         )}
         <canvas ref={canvasRef} style={{ display: "none" }} />
+
+        {uploadStatus === "loading" && (
+          <div className={styles.uploadOverlay}>
+            <div className={styles.spinner}></div>
+          </div>
+        )}
       </div>
 
-      <button
-        className={`${styles.verifyButton} ${styles.builder5038d9ff474a431b99296e18237da7b4}`}
-        onClick={capturedImage ? resetCamera : captureImage}
-      >
-        {capturedImage ? "Retake Image" : "Click Image to Verify"}
-      </button>
+      {uploadStatus !== "idle" && (
+        <div className={`${styles.uploadMessage} ${styles[uploadStatus]}`}>
+          {uploadMessage}
+        </div>
+      )}
+
+      <div className={styles.buttonGroup}>
+        <button
+          className={styles.verifyButton}
+          onClick={capturedImage ? resetCamera : captureImage}
+          disabled={uploadStatus === "loading"}
+        >
+          {capturedImage ? "Retake Image" : "Click Image to Verify"}
+        </button>
+
+        {capturedImage && (
+          <button
+            className={`${styles.uploadButton} ${styles.builder5038d9ff474a431b99296e18237da7b4} ${uploadStatus === "loading" ? styles.loading : ""}`}
+            onClick={uploadImageToBackend}
+            disabled={uploadStatus === "loading"}
+          >
+            {uploadStatus === "loading"
+              ? "Uploading..."
+              : "Upload for Verification"}
+          </button>
+        )}
+      </div>
     </section>
   );
 };
 
-// Login form component
-const LoginForm = () => {
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [name, setName] = useState("");
+// Blood group and type data
+const bloodGroups = ["A", "B", "AB", "O"];
+const bloodTypes = ["Positive", "Negative"];
 
-  const updatePhoneNumber = (event) => {
-    setPhoneNumber(event.target.value);
-  };
+// Dropdown component for reusability
+const Dropdown = ({
+  label,
+  options,
+  value,
+  onChange,
+  description,
+  placeholder,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-  const updateName = (event) => {
-    setName(event.target.value);
+  const handleOptionClick = (option) => {
+    onChange(option);
+    setIsOpen(false);
   };
 
   return (
-    <section className={styles.div3}>
-      <div className={styles.div4}>
-        <h2 className={styles.h2}>Blood Donor Login</h2>
-        <p className={styles.formIntro}>
-          Please enter your details to access your blood donor account. Link
-          your ABHA ID for seamless health record integration.
-        </p>
-
-        <FormField
-          label="Phone Number"
-          type="tel"
-          value={phoneNumber}
-          onChange={updatePhoneNumber}
-          description="Enter the mobile number registered with your donor account"
-        />
-
-        <button
-          className={`${styles.abhaButton} ${styles.builder5038d9ff474a431b99296e18237da7b4}`}
+    <div className={styles.dropdownContainer}>
+      <label className={styles.label}>{label}</label>
+      <div className={styles.customDropdown}>
+        <div
+          className={styles.dropdownSelected}
+          onClick={() => setIsOpen(!isOpen)}
         >
-          Link ABHA ID
-        </button>
-
-        <FormField
-          label="Name"
-          type="text"
-          value={name}
-          onChange={updateName}
-          description="Enter your full name as registered"
-        />
-
-        <button
-          className={`${styles.button2} ${styles.builder27ffde5e04e944bb83007770e582d134}`}
-        >
-          Login
-        </button>
-
-        <p className={styles.privacyNote}>
-          Your information is secure and will only be used for verification
-          purposes.
-        </p>
+          {value || placeholder}
+          <span
+            className={`${styles.dropdownArrow} ${isOpen ? styles.open : ""}`}
+          ></span>
+        </div>
+        {isOpen && (
+          <ul className={styles.dropdownOptions}>
+            {options.map((option) => (
+              <li
+                key={option}
+                className={styles.dropdownOption}
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </section>
+      {description && <p className={styles.fieldDescription}>{description}</p>}
+    </div>
   );
 };
 
 function DonorLogin() {
+  const [phoneNumber, setPhoneNumber] = useState(() => "");
+  const [name, setName] = useState(() => "");
+  const [age, setAge] = useState(() => 25);
+  const [bloodGroup, setBloodGroup] = useState(() => "");
+  const [bloodType, setBloodType] = useState(() => "");
+  const [capturedImage, setCapturedImage] = useState(null);
+  const [uploadStatus, setUploadStatus] = useState("idle"); // idle, loading, success, error
+  const [uploadMessage, setUploadMessage] = useState("");
+  const [loginStatus, setLoginStatus] = useState("idle"); // idle, loading, success, error
+  const [loginMessage, setLoginMessage] = useState("");
+
+  function updatePhoneNumber(event) {
+    setPhoneNumber(event.target.value);
+  }
+
+  function updateName(event) {
+    setName(event.target.value);
+  }
+
+  function updateAge(event) {
+    setAge(event.target.value);
+  }
+
+  function updateBloodGroup(value) {
+    setBloodGroup(value);
+  }
+
+  function updateBloodType(value) {
+    setBloodType(value);
+  }
+
+  async function handleLogin() {
+    // Reset previous messages
+    setLoginStatus("idle");
+    setLoginMessage("");
+
+    // Validate form fields
+    if (!phoneNumber.trim()) {
+      setLoginStatus("error");
+      setLoginMessage("Please enter your phone number");
+      return;
+    }
+
+    if (!name.trim()) {
+      setLoginStatus("error");
+      setLoginMessage("Please enter your name");
+      return;
+    }
+
+    if (!bloodGroup) {
+      setLoginStatus("error");
+      setLoginMessage("Please select your blood group");
+      return;
+    }
+
+    if (!bloodType) {
+      setLoginStatus("error");
+      setLoginMessage("Please select your blood type");
+      return;
+    }
+
+    // Check if image has been captured
+    if (!capturedImage) {
+      setLoginStatus("error");
+      setLoginMessage("Please capture your image for verification");
+      return;
+    }
+
+    try {
+      setLoginStatus("loading");
+      setLoginMessage("Logging in...");
+
+      // Prepare the complete donor data
+      const donorData = {
+        phoneNumber,
+        name,
+        age,
+        bloodGroup,
+        bloodType,
+        image: capturedImage,
+        timestamp: new Date().toISOString(),
+      };
+
+      console.log("Sending donor data to backend:", donorData);
+
+      // Replace with your actual login API endpoint
+      const loginApiUrl = "https://your-api-endpoint.com/login";
+
+      const response = await fetch(loginApiUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(donorData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      setLoginStatus("success");
+      setLoginMessage("Login successful! Redirecting...");
+
+      // You can handle the response data here if needed
+      console.log("Login successful:", data);
+
+      // Simulate redirect after successful login
+      setTimeout(() => {
+        alert("Login successful! You would be redirected to the dashboard.");
+        // window.location.href = "/dashboard"; // Uncomment to actually redirect
+      }, 2000);
+    } catch (error) {
+      console.error("Error during login:", error);
+      setLoginStatus("error");
+      setLoginMessage("Login failed. Please check your details and try again.");
+    }
+  }
+
   return (
     <main className={styles.mainContainer}>
       <div className={styles.div}>
-        <WebcamSection />
-        <LoginForm />
+        <WebcamSection
+          capturedImage={capturedImage}
+          setCapturedImage={setCapturedImage}
+          uploadStatus={uploadStatus}
+          uploadMessage={uploadMessage}
+          setUploadStatus={setUploadStatus}
+          setUploadMessage={setUploadMessage}
+        />
+
+        <section className={styles.div3}>
+          <div className={styles.div4}>
+            <h2 className={styles.h2}>Blood Donor Login</h2>
+            <p className={styles.formIntro}>
+              Please enter your details to access your blood donor account. Link
+              your ABHA ID for seamless health record integration.
+            </p>
+
+            <div className={styles.div5}>
+              <label className={styles.label}>Phone Number</label>
+              <div className={styles.div6}>
+                <input
+                  className={`${styles.input} ${styles.builderB9a4be3f78fa4822a6de17fa7abe0706}`}
+                  type="tel"
+                  value={phoneNumber}
+                  onInput={updatePhoneNumber}
+                />
+                <button
+                  className={`${styles.button} ${styles.builder5038d9ff474a431b99296e18237da7b4}`}
+                >
+                  Link ABHA
+                </button>
+              </div>
+              <p className={styles.fieldDescription}>
+                Enter the mobile number registered with your donor account
+              </p>
+            </div>
+
+            <div className={styles.div7}>
+              <label className={styles.label}>Name</label>
+              <input
+                className={`${styles.input} ${styles.builderCca50e4d20f84267b82e1a2cb6345adb}`}
+                type="text"
+                value={name}
+                onInput={updateName}
+              />
+              <p className={styles.fieldDescription}>
+                Enter your full name as registered
+              </p>
+            </div>
+
+            <div className={styles.ageSliderContainer}>
+              <label className={styles.label}>
+                Age: <span className={styles.ageValue}>{age}</span>
+              </label>
+              <div className={styles.sliderContainer}>
+                <span className={styles.sliderMinValue}>18</span>
+                <input
+                  type="range"
+                  min="18"
+                  max="100"
+                  value={age}
+                  onChange={updateAge}
+                  className={styles.ageSlider}
+                />
+                <span className={styles.sliderMaxValue}>100</span>
+              </div>
+              <p className={styles.fieldDescription}>
+                Drag the slider to select your age
+              </p>
+            </div>
+
+            <div className={styles.bloodFieldsContainer}>
+              <Dropdown
+                label="Blood Group"
+                options={bloodGroups}
+                value={bloodGroup}
+                onChange={updateBloodGroup}
+                description="Select your blood group (A, B, AB, O)"
+                placeholder="Select Blood Group"
+              />
+
+              <Dropdown
+                label="Blood Type"
+                options={bloodTypes}
+                value={bloodType}
+                onChange={updateBloodType}
+                description="Select your blood type (+ or -)"
+                placeholder="Select Blood Type"
+              />
+            </div>
+
+            {!capturedImage && (
+              <div className={styles.verificationReminder}>
+                <p>
+                  Please capture your image for identity verification before
+                  logging in.
+                </p>
+              </div>
+            )}
+
+            {loginStatus !== "idle" && (
+              <div className={`${styles.loginMessage} ${styles[loginStatus]}`}>
+                {loginMessage}
+              </div>
+            )}
+
+            <button
+              className={`${styles.button2} ${styles.builder27ffde5e04e944bb83007770e582d134} ${loginStatus === "loading" ? styles.loading : ""}`}
+              onClick={handleLogin}
+              disabled={loginStatus === "loading"}
+            >
+              {loginStatus === "loading" ? "Logging in..." : "Login"}
+            </button>
+
+            <p className={styles.privacyNote}>
+              Your information is secure and will only be used for verification
+              purposes. All details including age, phone number, name, blood
+              group and type will be sent to our secure database.
+            </p>
+          </div>
+        </section>
       </div>
     </main>
   );
