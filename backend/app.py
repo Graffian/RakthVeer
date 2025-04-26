@@ -3,6 +3,9 @@ from utils import donorLoginCred
 from fastapi.middleware.cors import CORSMiddleware
 import base64
 from preprocess import predict_human_or_object
+from models.load_model import donation_prob_model
+from utils import donorRankCred
+from utils import donorLocationCred
 app = FastAPI()
 
 
@@ -14,7 +17,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
+location = []
 @app.get("/")
 def home():
     return {"msg" : "hi"}
@@ -28,3 +31,11 @@ async def pic_handle(donor_cred : donorLoginCred):
     with open(f"uploads/image-{donor_cred.phoneNumber}.webp" , "wb") as f:
          f.write(base_64)
     return {"prediction" : predict_human_or_object()}
+
+@app.post("/api/donor")
+async def donor_rank(donor_rank_cred : donorRankCred):
+    print(donor_rank_cred)
+    
+@app.post("/api/donor/location")
+async def donor_location(donor_location : donorLocationCred):
+    print(donor_location)

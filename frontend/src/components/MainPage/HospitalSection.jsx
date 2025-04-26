@@ -203,6 +203,8 @@ function HospitalSection({ onHospitalSelect }) {
   const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
   const [errorMessage, setErrorMessage] = useState("");
 
+  const [responseMessage, setResponseMessage] = useState(""); // <-- to store response
+
   // Listen for clear hospital selection event
   useEffect(() => {
     const handleClearSelection = () => {
@@ -278,7 +280,7 @@ function HospitalSection({ onHospitalSelect }) {
 
     try {
       // Replace with your actual API endpoint
-      const response = await fetch("https://api.example.com/blood-requests", {
+      const response = await fetch("http://127.0.0.1:8000/api/donor", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -329,6 +331,11 @@ function HospitalSection({ onHospitalSelect }) {
       }
     }
   };
+
+  
+
+  
+
 
   return (
     <section className={styles.leftColumnContainer}>
@@ -412,6 +419,7 @@ function HospitalSection({ onHospitalSelect }) {
             className={`${styles.submitButton} ${styles.builder8dd3a2832d5d43eb9529e7352f6b4d5d}`}
             type="submit"
             disabled={isSubmitting}
+            
           >
             {isSubmitting ? "Submitting..." : "Submit Request"}
           </button>

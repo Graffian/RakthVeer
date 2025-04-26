@@ -10,4 +10,13 @@ class donorLoginCred(BaseModel):
         bloodType : str
         image: str
         timestamp: str
-    
+class donorRankCred(BaseModel):
+    name: str
+    contactNumber: int
+    bloodGroup: str
+    unitsRequired: int
+    hospitalName: str
+    reason: str
+class donorLocationCred(BaseModel):
+    latitude:float
+    longitude:float

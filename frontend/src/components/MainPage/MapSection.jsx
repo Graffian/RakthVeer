@@ -24,7 +24,7 @@ function MapSection() {
         setLocationStatus("success");
 
         // Send location to your API
-        fetch("https://your-api.com/location", {
+        fetch("http://127.0.0.1:8000/api/donor/location", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
