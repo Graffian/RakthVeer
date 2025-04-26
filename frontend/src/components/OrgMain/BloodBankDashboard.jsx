@@ -14,6 +14,7 @@ import ArrivingDonorsSection from "./ArrivingDonorsSection";
 function BloodBankDashboard() {
   const [orgName, setOrgName] = useState("City Blood Bank");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [processingDonors, setProcessingDonors] = useState([]);
 
   const [bloodInventory, setBloodInventory] = useState({
     "A+": 45,
@@ -109,11 +110,46 @@ function BloodBankDashboard() {
     }));
   }, []);
 
+  const sendToBackend = async (donorId, status) => {
+    try {
+      // Add donor to processing list
+      setProcessingDonors((prev) => [...prev, donorId]);
+
+      console.log(`Sending to backend: Donor ${donorId} status: ${status}`);
+
+      await fetch('/api/donations/status', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ donorId, status, timestamp: new Date() })
+      });
+
+      // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      console.log(`Backend response received for donor ${donorId}`);
+      return true;
+    } catch (error) {
+      console.error(`Error sending donation status to backend:`, error);
+      return false;
+    } finally {
+      // Remove donor from processing list
+      setProcessingDonors((prev) => prev.filter((id) => id !== donorId));
+    }
+  };
+
   const handleConfirmDonation = useCallback(
-    (donorId) => {
+    async (donorId) => {
       // Find the donor
       const donor = arrivingDonors.find((d) => d.id === donorId);
       if (!donor) return;
+
+      // Send data to backend
+      const success = await sendToBackend(donorId, "donated");
+
+      if (!success) {
+        alert(`Failed to update donation status. Please try again.`);
+        return;
+      }
 
       // Update inventory with the donor's blood type
       const updatedInventory = { ...bloodInventory };
@@ -149,19 +185,22 @@ function BloodBankDashboard() {
       // Show success message
       alert(`Donation from ${donor.name} confirmed successfully!`);
     },
-    [
-      arrivingDonors,
-      bloodInventory,
-      setInventoryUpdates,
-      setCompletedDonations,
-    ],
+    [arrivingDonors, bloodInventory],
   );
 
   const handleRejectDonation = useCallback(
-    (donorId) => {
+    async (donorId) => {
       // Find the donor
       const donor = arrivingDonors.find((d) => d.id === donorId);
       if (!donor) return;
+
+      // Send data to backend
+      const success = await sendToBackend(donorId, "not_donated");
+
+      if (!success) {
+        alert(`Failed to update donation status. Please try again.`);
+        return;
+      }
 
       // Remove donor from arriving list
       setArrivingDonors((prev) => prev.filter((d) => d.id !== donorId));
@@ -248,6 +287,7 @@ function BloodBankDashboard() {
         </section>
         <ArrivingDonorsSection
           arrivingDonors={arrivingDonors}
+          processingDonors={processingDonors}
           onConfirmDonation={handleConfirmDonation}
           onRejectDonation={handleRejectDonation}
         />

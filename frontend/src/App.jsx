@@ -5,6 +5,7 @@ import BloodBankDashboard from "./components/OrgMain/BloodBankDashboard"
 import './App.css'
 import OrgLogin from './components/OrgLogin/InputDesign'
 import InputDesign from "./components/ngoMain/InputDesign"
+import DonatedUserDashboard from "./components/DonatedMain/DonatedUserDashboard"
 import { Route , Routes } from 'react-router-dom'
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/orgLogin" element={<OrgLogin/>}/>
         <Route path="/orgMain" element={<BloodBankDashboard/>}/>
         <Route path="/ngoMain" element={<InputDesign/>}/>
+        <Route path="/donated/main" element={<DonatedUserDashboard/>}/>
       </Routes>
     </>
   )

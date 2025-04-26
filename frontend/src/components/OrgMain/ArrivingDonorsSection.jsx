@@ -3,6 +3,7 @@ import styles from "./ArrivingDonorsSection.module.css";
 
 function ArrivingDonorsSection({
   arrivingDonors,
+  processingDonors = [],
   onConfirmDonation,
   onRejectDonation,
 }) {
@@ -30,20 +31,30 @@ function ArrivingDonorsSection({
               <div className={styles.donationStatus}>
                 <p className={styles.statusLabel}>Has donated:</p>
                 <div className={styles.actionButtons}>
-                  <button
-                    className={styles.confirmButton}
-                    onClick={() => onConfirmDonation(donor.id)}
-                    aria-label={`Confirm ${donor.name} has donated`}
-                  >
-                    ✓
-                  </button>
-                  <button
-                    className={styles.rejectButton}
-                    onClick={() => onRejectDonation(donor.id)}
-                    aria-label={`${donor.name} has not donated`}
-                  >
-                    ✕
-                  </button>
+                  {processingDonors.includes(donor.id) ? (
+                    <div className={styles.loadingIndicator}>
+                      <div className={styles.spinner}></div>
+                    </div>
+                  ) : (
+                    <>
+                      <button
+                        className={styles.confirmButton}
+                        onClick={() => onConfirmDonation(donor.id)}
+                        aria-label={`Confirm ${donor.name} has donated`}
+                        disabled={processingDonors.includes(donor.id)}
+                      >
+                        ✓
+                      </button>
+                      <button
+                        className={styles.rejectButton}
+                        onClick={() => onRejectDonation(donor.id)}
+                        aria-label={`${donor.name} has not donated`}
+                        disabled={processingDonors.includes(donor.id)}
+                      >
+                        ✕
+                      </button>
+                    </>
+                  )}
                 </div>
               </div>
             </li>

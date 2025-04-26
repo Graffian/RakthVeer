@@ -1,0 +1,160 @@
+.container {
+  background-color: #fff;
+  padding: 40px 20px;
+  font-family: oswald, Montserrat, sans-serif;
+}
+
+.dashboardContent {
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+/* Timer Section */
+.timerContainer {
+  justify-content: center;
+  gap: 20px;
+  display: flex;
+}
+
+@media (width<=640px) {
+  .timerContainer {
+    flex-direction: column;
+  }
+}
+
+.lastDonationCard {
+  color: #fff;
+  text-align: center;
+  background-color: #107ecb;
+  border-radius: 20px;
+  flex: 1;
+  padding: 30px;
+}
+
+.nextDonationCard {
+  color: #fff;
+  text-align: center;
+  background-color: #dc3545;
+  border-radius: 20px;
+  flex: 1;
+  padding: 30px;
+}
+
+.timerLabel {
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.timerValue {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+/* Camps Section */
+.campsSection {
+  background-color: #f3f4f4;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.campsHeading {
+  color: #ea2f2c;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
+.campsList {
+  flex-direction: column;
+  gap: 20px;
+  display: flex;
+}
+
+.campCard {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px #0000001a;
+}
+
+.campName {
+  color: #4738c0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.campDetails {
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  display: flex;
+}
+
+@media (width<=640px) {
+  .campDetails {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.campDate {
+  margin-bottom: 5px;
+}
+
+.volunteerSection {
+  align-items: center;
+  gap: 15px;
+  display: flex;
+}
+
+.volunteerCount {
+  text-align: center;
+}
+
+.volunteerLabel {
+  color: #4738c0;
+}
+
+.volunteerNumbers {
+  font-weight: 700;
+}
+
+.volunteerButton {
+  color: #fff;
+  cursor: pointer;
+  background-color: #dc3545;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 500;
+}
+
+.volunteerButton:hover {
+  background-color: #c82333;
+}
+
+/* Contribution Message */
+.contributionMessage {
+  text-align: center;
+  background-color: #fff8f8;
+  border: 1px solid #dc3545;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.contributionHeading {
+  color: #dc3545;
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.contributionText {
+  color: #4738c0;
+  font-size: 16px;
+  line-height: 1.6;
+}
