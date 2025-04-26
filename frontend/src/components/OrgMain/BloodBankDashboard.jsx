@@ -9,6 +9,7 @@ import CompletedDonationsSection from "./CompletedDonationsSection";
 import UrgentRequestsSection from "./UrgentRequestsSection";
 import InventoryUpdatesSection from "./InventoryUpdatesSection";
 import RecentActivitySection from "./RecentActivitySection";
+import ArrivingDonorsSection from "./ArrivingDonorsSection";
 
 function BloodBankDashboard() {
   const [orgName, setOrgName] = useState("City Blood Bank");
@@ -66,6 +67,37 @@ function BloodBankDashboard() {
     },
   ]);
 
+  const [arrivingDonors, setArrivingDonors] = useState([
+    {
+      id: "d1",
+      name: "Michael Chen",
+      location: "2.3 miles away, Downtown",
+      bloodType: "O+",
+      eta: "5 min",
+    },
+    {
+      id: "d2",
+      name: "Sophia Rodriguez",
+      location: "1.5 miles away, Westside",
+      bloodType: "A-",
+      eta: "10 min",
+    },
+    {
+      id: "d3",
+      name: "David Kim",
+      location: "0.8 miles away, University Area",
+      bloodType: "B+",
+      eta: "3 min",
+    },
+    {
+      id: "d4",
+      name: "Aisha Johnson",
+      location: "Just arrived, Waiting Room",
+      bloodType: "AB+",
+      eta: null,
+    },
+  ]);
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -76,6 +108,69 @@ function BloodBankDashboard() {
       [bloodType]: (prev[bloodType] || 0) + change,
     }));
   }, []);
+
+  const handleConfirmDonation = useCallback(
+    (donorId) => {
+      // Find the donor
+      const donor = arrivingDonors.find((d) => d.id === donorId);
+      if (!donor) return;
+
+      // Update inventory with the donor's blood type
+      const updatedInventory = { ...bloodInventory };
+      const bloodType = donor.bloodType;
+      updatedInventory[bloodType] = (updatedInventory[bloodType] || 0) + 1;
+      setBloodInventory(updatedInventory);
+
+      // Add to inventory updates
+      const timestamp = new Date().toLocaleString();
+      setInventoryUpdates((prev) => [
+        {
+          type: "Received",
+          units: 1,
+          bloodType: bloodType,
+          timestamp,
+        },
+        ...prev,
+      ]);
+
+      // Remove donor from arriving list
+      setArrivingDonors((prev) => prev.filter((d) => d.id !== donorId));
+
+      // Add to completed donations
+      setCompletedDonations((prev) => [
+        {
+          donor: donor.name,
+          bloodType: donor.bloodType,
+          date: new Date().toISOString().split("T")[0],
+        },
+        ...prev,
+      ]);
+
+      // Show success message
+      alert(`Donation from ${donor.name} confirmed successfully!`);
+    },
+    [
+      arrivingDonors,
+      bloodInventory,
+      setInventoryUpdates,
+      setCompletedDonations,
+    ],
+  );
+
+  const handleRejectDonation = useCallback(
+    (donorId) => {
+      // Find the donor
+      const donor = arrivingDonors.find((d) => d.id === donorId);
+      if (!donor) return;
+
+      // Remove donor from arriving list
+      setArrivingDonors((prev) => prev.filter((d) => d.id !== donorId));
+
+      // Show message
+      alert(`${donor.name} marked as not donated.`);
+    },
+    [arrivingDonors],
+  );
 
   const saveInventoryChanges = useCallback(async () => {
     try {
@@ -151,6 +246,11 @@ function BloodBankDashboard() {
           <UrgentRequestsSection />
           <InventoryUpdatesSection inventoryUpdates={inventoryUpdates} />
         </section>
+        <ArrivingDonorsSection
+          arrivingDonors={arrivingDonors}
+          onConfirmDonation={handleConfirmDonation}
+          onRejectDonation={handleRejectDonation}
+        />
         <RecentActivitySection />
       </main>
     </div>
