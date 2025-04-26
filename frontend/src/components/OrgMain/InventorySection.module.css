@@ -1,0 +1,129 @@
+.inventoryCard {
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 24px #7f02101f;
+}
+
+.sectionHeader {
+  color: #2b2b2b;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 16px;
+  font-size: 20px;
+  display: flex;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.saveButton {
+  color: #fff;
+  cursor: pointer;
+  background-color: #008000;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.actionButton {
+  color: #fff;
+  cursor: pointer;
+  background-color: #7f0210;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.inventoryTable {
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 100%;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.tableHeader {
+  color: #fff;
+  background-color: #7f0210;
+}
+
+.leftAlign {
+  text-align: left;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.rightAlign {
+  text-align: right;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.tableRow {
+  border-bottom: 1px solid #7f02101a;
+}
+
+.tableRow:hover {
+  background-color: #7f02100d;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.bloodType {
+  color: #7f0210;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.unitControls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 16px;
+}
+
+.controlButton {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #7f0210;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.controlButton:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.unitCount {
+  color: #2b2b2b;
+  font-size: 16px;
+  min-width: 40px;
+  text-align: center;
+  position: relative;
+}
+
+.pendingChange {
+  font-size: 12px;
+  color: #7f0210;
+  margin-left: 4px;
+}

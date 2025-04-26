@@ -74,8 +74,8 @@ function RakthveerLandingPage() {
           </div>
 
           <div className={styles.buttonContainer}>
-            <LoginButton onClick={()=>{navigate("/login")}} primary mainText="Login as Donor" />
-            <LoginButton onClick={()=>{navigate("/orgLogin")}} mainText="Login as Organization" />
+            <LoginButton  primary mainText="Login as Donor" />
+            <LoginButton  mainText="Login as Organization" />
           </div>
         </section>
       </main>
