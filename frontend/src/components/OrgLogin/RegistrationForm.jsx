@@ -19,6 +19,7 @@ const RegistrationForm = ({
   file,
   setFile,
   errorMessage,
+  successMessage,
   handleSubmit,
   isSubmitting,
 }) => {
@@ -27,24 +28,27 @@ const RegistrationForm = ({
       {errorMessage && (
         <div className={styles.errorMessage}>{errorMessage}</div>
       )}
+      {successMessage && (
+        <div className={styles.successMessage}>{successMessage}</div>
+      )}
 
       <FormField
         label="Organization Name"
-        value={orgName}
+        value={orgName || ""}
         onChange={(e) => setOrgName(e.target.value)}
         required
       />
 
       <TextAreaField
         label="Address"
-        value={address}
+        value={address || ""}
         onChange={(e) => setAddress(e.target.value)}
         required
       />
 
       <FormField
         label="Pincode"
-        value={pincode}
+        value={pincode || ""}
         onChange={(e) => setPincode(e.target.value)}
         maxLength="6"
         pattern="[0-9]{6}"
@@ -54,7 +58,7 @@ const RegistrationForm = ({
 
       <FormField
         label="Total Blood Storage Capacity (units)"
-        value={bloodCapacity}
+        value={bloodCapacity || ""}
         onChange={(e) => setBloodCapacity(e.target.value)}
         type="number"
         min="1"
@@ -73,7 +77,7 @@ const RegistrationForm = ({
 
       <SubmitButton
         isSubmitting={isSubmitting}
-        text={`Register ${orgType === "hospital" ? "Hospital" : "NGO"}`}
+        text={orgType === "hospital" ? "Register Hospital" : "Register NGO"}
         loadingText="Submitting..."
       />
     </form>

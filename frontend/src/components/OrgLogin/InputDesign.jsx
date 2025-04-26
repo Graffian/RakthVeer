@@ -4,6 +4,7 @@ import styles from "./InputDesign.module.css";
 import RegistrationHeader from "./RegistrationHeader";
 import RegistrationForm from "./RegistrationForm";
 import OrganizationTypeSelector from "./OrganizationTypeSelector";
+import ApiService from "./ApiService";
 
 function InputDesign() {
   const [orgType, setOrgType] = useState("hospital");
@@ -15,9 +16,15 @@ function InputDesign() {
   const [file, setFile] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    // Reset messages
+    setErrorMessage("");
+    setSuccessMessage("");
+
+    // Validate form fields
     if (!orgName || !address || !pincode || !bloodCapacity || !file) {
       setErrorMessage("Please fill in all required fields");
       return;
@@ -30,12 +37,44 @@ function InputDesign() {
       setErrorMessage("Please enter a valid blood storage capacity");
       return;
     }
-    setErrorMessage("");
+
     setIsSubmitting(true);
-    // Handle form submission
-    setTimeout(() => {
+
+    try {
+      // Get file URI first
+      const fileUri = await ApiService.getFileUri(file);
+
+      // Prepare form data with file URI
+      const formData = {
+        orgType,
+        orgName,
+        address,
+        pincode,
+        bloodCapacity,
+        fileUri,
+        file, // Include the actual file for FormData
+      };
+
+      // Submit registration data
+      const response = await ApiService.submitRegistration(formData);
+
+      // Show success message
+      setSuccessMessage("Registration submitted successfully!");
+
+      // Optionally reset form fields after successful submission
+      // setOrgName("");
+      // setAddress("");
+      // setPincode("");
+      // setBloodCapacity("");
+      // setFile(null);
+    } catch (error) {
+      // Handle submission error
+      setErrorMessage(
+        error.message || "Failed to submit registration. Please try again.",
+      );
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   }
 
   return (
@@ -64,6 +103,7 @@ function InputDesign() {
               file={file}
               setFile={setFile}
               errorMessage={errorMessage}
+              successMessage={successMessage}
               handleSubmit={handleSubmit}
               isSubmitting={isSubmitting}
             />
