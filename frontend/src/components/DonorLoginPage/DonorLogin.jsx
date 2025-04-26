@@ -350,10 +350,7 @@ function DonorLogin() {
       console.log("Login successful:", data);
 
       // Simulate redirect after successful login
-      setTimeout(() => {
-        alert("Login successful! You would be redirected to the dashboard.");
-        // window.location.href = "/dashboard"; // Uncomment to actually redirect
-      }, 2000);
+
     } catch (error) {
       console.error("Error during login:", error);
       setLoginStatus("error");
