@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./DonorLogin.module.css";
+import { useNavigate } from "react-router-dom";
 
 // Webcam section component
 const WebcamSection = ({
@@ -86,7 +87,7 @@ const WebcamSection = ({
       setUploadMessage("Uploading image for verification...");
 
       // Replace with your actual API endpoint
-      const apiUrl = "https://your-api-endpoint.com/upload-image";
+      const apiUrl = "http://127.0.0.1:8000/api/image";
 
       const response = await fetch(apiUrl, {
         method: "POST",
@@ -238,6 +239,7 @@ const Dropdown = ({
 };
 
 function DonorLogin() {
+  const navigate = useNavigate()
   const [phoneNumber, setPhoneNumber] = useState(() => "");
   const [name, setName] = useState(() => "");
   const [age, setAge] = useState(() => 25);
@@ -324,7 +326,7 @@ function DonorLogin() {
       console.log("Sending donor data to backend:", donorData);
 
       // Replace with your actual login API endpoint
-      const loginApiUrl = "https://your-api-endpoint.com/login";
+      const loginApiUrl = "http://127.0.0.1:8000/api/login/cred";
 
       const response = await fetch(loginApiUrl, {
         method: "POST",
@@ -334,15 +336,16 @@ function DonorLogin() {
         body: JSON.stringify(donorData),
       });
 
-      if (!response.ok) {
+      if (response == "object") {
         throw new Error(`Server responded with status: ${response.status}`);
       }
 
       const data = await response.json();
-
-      setLoginStatus("success");
-      setLoginMessage("Login successful! Redirecting...");
-
+      if (data.prediction == "human"){
+        setLoginStatus("success");
+        setLoginMessage("Login successful! Redirecting...");
+        navigate("/main")
+      }
       // You can handle the response data here if needed
       console.log("Login successful:", data);
 

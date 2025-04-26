@@ -1,11 +1,12 @@
 "use client";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./RakthveerLandingPage.module.css";
 import Header from "./Header";
 import InfoCard from "./InfoCard";
 import LoginButton from "./LoginButton";
 import Footer from "./Footer";
-import { useNavigate } from "react-router-dom";
+
 
 function RakthveerLandingPage() {
   const navigate = useNavigate()
@@ -13,6 +14,14 @@ function RakthveerLandingPage() {
 
   const toggleLanguage = () => {
     setIsEnglish((prev) => !prev);
+  };
+
+  const navigateToDonorLogin = () => {
+    navigate("/login");
+  };
+
+  const navigateToOrgLogin = () => {
+    navigate("/orgLogin");
   };
 
   const donorBenefits = [
@@ -74,8 +83,15 @@ function RakthveerLandingPage() {
           </div>
 
           <div className={styles.buttonContainer}>
-            <LoginButton  primary mainText="Login as Donor" />
-            <LoginButton  mainText="Login as Organization" />
+            <LoginButton
+              primary
+              mainText="Login as Donor"
+              onClick={navigateToDonorLogin}
+            />
+            <LoginButton
+              mainText="Login as Organization"
+              onClick={navigateToOrgLogin}
+            />
           </div>
         </section>
       </main>
