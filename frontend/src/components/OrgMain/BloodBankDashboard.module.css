@@ -1,0 +1,38 @@
+.container {
+  background-color: #fff;
+  min-height: 100vh;
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.mainContent {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.dashboardGrid {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+  display: grid;
+}
+
+.flexContainer {
+  gap: 24px;
+  display: flex;
+}
+
+/* Hover effect for menu items */
+.menuItem:hover {
+  background-color: #7f02101a;
+}
+
+/* Border removal for last item in lists */
+.listItem:last-child {
+  border-bottom: none;
+}
+
+/* Hover effect for list items */
+.listItem:hover {
+  background-color: #7f02100d;
+}
