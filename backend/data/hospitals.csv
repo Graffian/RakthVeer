@@ -1,0 +1,201 @@
+,Hospital,Blood Groups Needed,Urgency,Units Needed
+0,CARE Hospitals,"O+, A-",Regular Need,4
+1,Apollo Hospitals,"AB-, AB+",Regular Need,3
+2,Manipal Hospitals,AB+,Regular Need,6
+3,Utkal Hospitals,B-,Regular Need,2
+4,Vivekananda Hospital,"A+, A-",Regular Need,3
+5,SUM Ultimate Medicare,"B+, B-, O-",Regular Need,5
+6,Health Village Hospital,"O-, O+, B-",Regular Need,4
+7,Aditya Ashwini Hospital,"B-, O-, B+",URGENT,4
+8,All India Institute of Medical Sciences,"A+, O-, O+",URGENT,4
+9,Kalinga Institute Of Medical Sciences,AB+,Regular Need,4
+10,Sunshine Hospital,"AB-, A-",Regular Need,3
+11,Neelachal Hospital Pvt Ltd,"AB-, B-",URGENT,6
+12,Blue Wheel Hospital,"B-, A-, B+",URGENT,2
+13,Sparsh Hospitals & Critical Care Pvt. Ltd.,"AB+, AB-",Regular Need,2
+14,Kar Clinic & Hospital,O+,Regular Need,3
+15,Hi-Tech Hospital & Medical College,"B-, B+",Regular Need,6
+16,Trinity Neuro Hospital & Trauma Centre,"B+, O-, O+",URGENT,3
+17,Shree Hospitals,"O-, B-",Regular Need,5
+18,ESI Hospital,"O-, B-",Regular Need,2
+19,PGIMER & Capital Hospital,"A-, AB+, O+",URGENT,4
+20,SimpleeKare Health,A+,URGENT,5
+21,Maxfort Hospital,"A-, O+",URGENT,4
+22,Maternity Care Hospital,"O+, B+, AB+",Regular Need,6
+23,Central Hospital East Coast Railway,"AB+, O+, AB-",URGENT,6
+24,Baidyanath Memorial Hospital,A+,URGENT,2
+25,Narayani Hospital,"AB-, B-",URGENT,6
+26,Capital Cure Healthcare,AB+,Regular Need,2
+27,Ananya Hospital,"AB+, A-",Regular Need,3
+28,Jagannath Hospital,"O-, O+, A-",Regular Need,6
+29,Ahalya Hospital,"B-, O-",Regular Need,2
+30,City Hospital 31,"A+, AB+",Regular Need,5
+31,Jyoti Hospital 32,"A-, AB-, A+",URGENT,5
+32,Amri Hospital 33,"O-, A+",URGENT,5
+33,Sai Hospital 34,"A-, A+",Regular Need,3
+34,Medilane Hospital 35,AB-,Regular Need,2
+35,Jyoti Hospital 36,AB-,Regular Need,4
+36,Janaki Hospital 37,"A-, A+",Regular Need,2
+37,Jyoti Hospital 38,"AB-, B+",Regular Need,4
+38,City Hospital 39,O-,Regular Need,5
+39,Sai Hospital 40,AB+,URGENT,6
+40,Jyoti Hospital 41,"B-, O-",Regular Need,2
+41,Sai Hospital 42,"AB-, O+, B-",URGENT,2
+42,Amri Hospital 43,"A+, AB+",Regular Need,5
+43,Jyoti Hospital 44,A+,Regular Need,2
+44,Amri Hospital 45,O+,Regular Need,2
+45,Jyoti Hospital 46,"AB+, B-",URGENT,5
+46,Jyoti Hospital 47,AB-,Regular Need,4
+47,Jyoti Hospital 48,"A+, A-, O-",Regular Need,5
+48,Sai Hospital 49,"B-, O-",Regular Need,5
+49,Amri Hospital 50,A+,Regular Need,3
+50,Amri Hospital 51,"A-, AB-, O-",Regular Need,5
+51,Janaki Hospital 52,"A-, A+",URGENT,2
+52,Amri Hospital 53,B-,Regular Need,6
+53,Janaki Hospital 54,"B+, A-",Regular Need,2
+54,Medilane Hospital 55,"O-, A+, AB+",URGENT,6
+55,Sai Hospital 56,"O+, B+, AB+",Regular Need,2
+56,Sai Hospital 57,"AB+, AB-",Regular Need,4
+57,Jyoti Hospital 58,"A+, A-",Regular Need,5
+58,Sai Hospital 59,AB-,Regular Need,4
+59,Sai Hospital 60,A-,Regular Need,2
+60,Janaki Hospital 61,O-,URGENT,3
+61,Jyoti Hospital 62,"O-, AB+",Regular Need,3
+62,Jyoti Hospital 63,A-,Regular Need,5
+63,Janaki Hospital 64,"A+, AB+",Regular Need,6
+64,Medilane Hospital 65,"B-, A-",Regular Need,2
+65,Amri Hospital 66,"AB+, B-, AB-",URGENT,4
+66,Amri Hospital 67,"AB+, B-",Regular Need,5
+67,Sai Hospital 68,"AB-, O-",Regular Need,2
+68,Medilane Hospital 69,"B-, B+",URGENT,3
+69,Amri Hospital 70,AB+,Regular Need,6
+70,Janaki Hospital 71,B+,Regular Need,3
+71,Sai Hospital 72,"O-, B+, A-",URGENT,3
+72,City Hospital 73,O-,URGENT,5
+73,Jyoti Hospital 74,AB-,Regular Need,6
+74,Janaki Hospital 75,"AB+, A-, O+",Regular Need,5
+75,Medilane Hospital 76,B+,Regular Need,3
+76,Sai Hospital 77,A+,Regular Need,4
+77,Jyoti Hospital 78,A+,Regular Need,5
+78,Medilane Hospital 79,"O+, B+",Regular Need,4
+79,Medilane Hospital 80,"A-, O+, AB-",URGENT,2
+80,Medilane Hospital 81,"AB+, B+, A-",Regular Need,5
+81,City Hospital 82,"B-, AB+, A-",URGENT,5
+82,Sai Hospital 83,"AB-, O-",Regular Need,3
+83,Sai Hospital 84,"O+, B-, A-",URGENT,5
+84,Jyoti Hospital 85,"B-, O+",URGENT,6
+85,Sai Hospital 86,AB-,Regular Need,5
+86,Medilane Hospital 87,"O-, B+",URGENT,5
+87,Amri Hospital 88,"B-, AB-, B+",URGENT,3
+88,Janaki Hospital 89,"A-, AB+",Regular Need,4
+89,Jyoti Hospital 90,"A-, O-",Regular Need,5
+90,Jyoti Hospital 91,"O-, O+, B+",URGENT,4
+91,City Hospital 92,A-,Regular Need,5
+92,Jyoti Hospital 93,"B+, B-, O-",Regular Need,4
+93,Amri Hospital 94,"AB+, B-, O-",Regular Need,5
+94,Jyoti Hospital 95,AB-,URGENT,2
+95,Janaki Hospital 96,AB-,Regular Need,4
+96,Medilane Hospital 97,"B-, AB+",Regular Need,4
+97,Jyoti Hospital 98,O-,Regular Need,6
+98,Sai Hospital 99,AB-,URGENT,5
+99,Janaki Hospital 100,AB+,Regular Need,6
+100,Janaki Hospital 101,"O-, O+, A+",Regular Need,6
+101,Jyoti Hospital 102,"A+, AB-",Regular Need,5
+102,Amri Hospital 103,"AB-, A-, O+",Regular Need,6
+103,Jyoti Hospital 104,"B+, O+",Regular Need,2
+104,Sai Hospital 105,"AB-, O-",Regular Need,4
+105,Medilane Hospital 106,"B-, A-",Regular Need,2
+106,Amri Hospital 107,AB-,Regular Need,4
+107,Jyoti Hospital 108,"B+, O+",URGENT,3
+108,Medilane Hospital 109,"O-, A+",URGENT,2
+109,Amri Hospital 110,"O-, A-",Regular Need,6
+110,Amri Hospital 111,B+,Regular Need,6
+111,Amri Hospital 112,"A-, AB-",Regular Need,2
+112,Amri Hospital 113,"A-, B-, B+",Regular Need,4
+113,Sai Hospital 114,"B+, O+, A+",URGENT,6
+114,Jyoti Hospital 115,"AB-, B-",URGENT,2
+115,Sai Hospital 116,"B+, O-",Regular Need,4
+116,Janaki Hospital 117,AB+,Regular Need,2
+117,Amri Hospital 118,"AB-, O-, O+",Regular Need,3
+118,Jyoti Hospital 119,"B-, A-",Regular Need,5
+119,Janaki Hospital 120,"O-, AB-",Regular Need,5
+120,Jyoti Hospital 121,AB-,URGENT,5
+121,Jyoti Hospital 122,"B-, O+",Regular Need,5
+122,Sai Hospital 123,AB+,Regular Need,2
+123,Jyoti Hospital 124,"B+, A+",URGENT,2
+124,Janaki Hospital 125,A+,URGENT,5
+125,Medilane Hospital 126,"AB+, O-",Regular Need,6
+126,Jyoti Hospital 127,"A-, AB+",Regular Need,6
+127,City Hospital 128,"A+, AB-, O+",URGENT,5
+128,Amri Hospital 129,"B-, A-, AB-",Regular Need,3
+129,Janaki Hospital 130,"A+, B-",Regular Need,5
+130,Jyoti Hospital 131,"B-, A+",Regular Need,6
+131,Amri Hospital 132,"A+, A-, O-",Regular Need,4
+132,Sai Hospital 133,"O+, A+, O-",Regular Need,4
+133,City Hospital 134,O-,Regular Need,6
+134,Amri Hospital 135,"O+, A-",Regular Need,3
+135,Sai Hospital 136,"O+, A-",Regular Need,3
+136,Amri Hospital 137,O-,Regular Need,6
+137,Janaki Hospital 138,"O+, AB-",URGENT,2
+138,City Hospital 139,"A+, B-, AB+",Regular Need,5
+139,City Hospital 140,B+,Regular Need,2
+140,Jyoti Hospital 141,B+,Regular Need,6
+141,Jyoti Hospital 142,"O-, AB+, AB-",Regular Need,2
+142,Medilane Hospital 143,"A-, B-, O-",Regular Need,6
+143,City Hospital 144,"B-, O+",Regular Need,5
+144,City Hospital 145,B+,URGENT,5
+145,Jyoti Hospital 146,"A-, O-, B+",Regular Need,5
+146,City Hospital 147,"A-, AB-",Regular Need,3
+147,City Hospital 148,"AB-, AB+, A-",URGENT,6
+148,City Hospital 149,"AB+, B-, AB-",Regular Need,3
+149,Jyoti Hospital 150,A+,URGENT,3
+150,City Hospital 151,"AB-, A-, AB+",Regular Need,4
+151,Amri Hospital 152,"O+, A+",Regular Need,2
+152,Janaki Hospital 153,A+,Regular Need,3
+153,Amri Hospital 154,"B+, AB+, B-",Regular Need,5
+154,Sai Hospital 155,"AB+, B+",Regular Need,5
+155,Medilane Hospital 156,O+,Regular Need,3
+156,Sai Hospital 157,O+,Regular Need,5
+157,Medilane Hospital 158,"O+, AB+, B+",URGENT,6
+158,Medilane Hospital 159,B-,URGENT,4
+159,Janaki Hospital 160,"A+, B-, AB+",Regular Need,2
+160,Amri Hospital 161,"AB-, A+",Regular Need,6
+161,City Hospital 162,B-,Regular Need,6
+162,City Hospital 163,"O-, A-, AB-",Regular Need,3
+163,Janaki Hospital 164,"O-, AB+",Regular Need,6
+164,Sai Hospital 165,"AB+, O+",Regular Need,2
+165,Amri Hospital 166,"B-, O+",URGENT,6
+166,Sai Hospital 167,"AB+, A-, A+",Regular Need,2
+167,Janaki Hospital 168,"O-, B-",URGENT,3
+168,Sai Hospital 169,"A+, O+, B+",Regular Need,3
+169,Jyoti Hospital 170,"O-, B-",Regular Need,4
+170,Sai Hospital 171,"O+, AB+",Regular Need,3
+171,Jyoti Hospital 172,"A-, O+",Regular Need,3
+172,Amri Hospital 173,"O-, B-",Regular Need,4
+173,Jyoti Hospital 174,"B+, A+",URGENT,6
+174,Janaki Hospital 175,"AB-, B+, A+",Regular Need,5
+175,City Hospital 176,"A+, B+, O+",Regular Need,3
+176,Medilane Hospital 177,"AB+, A+, B+",Regular Need,4
+177,City Hospital 178,"A-, AB-",Regular Need,3
+178,Janaki Hospital 179,B+,Regular Need,4
+179,City Hospital 180,"B+, O-, A+",URGENT,6
+180,Jyoti Hospital 181,"A-, O+, AB+",Regular Need,6
+181,City Hospital 182,"AB+, O+",Regular Need,6
+182,Jyoti Hospital 183,"B-, A-",Regular Need,4
+183,Sai Hospital 184,B-,URGENT,2
+184,Sai Hospital 185,AB+,URGENT,6
+185,Medilane Hospital 186,"O+, AB-",Regular Need,3
+186,City Hospital 187,"B-, AB+, A-",Regular Need,6
+187,City Hospital 188,"B-, A+, AB-",URGENT,4
+188,City Hospital 189,O+,Regular Need,5
+189,Medilane Hospital 190,"AB-, AB+",Regular Need,6
+190,Amri Hospital 191,O-,URGENT,4
+191,Medilane Hospital 192,"AB-, AB+",Regular Need,3
+192,Medilane Hospital 193,O+,Regular Need,3
+193,Sai Hospital 194,"A+, AB+",Regular Need,5
+194,Amri Hospital 195,AB+,Regular Need,3
+195,Amri Hospital 196,"B-, O-, B+",Regular Need,4
+196,Sai Hospital 197,"O-, A-, O+",Regular Need,5
+197,Sai Hospital 198,"A+, B-, O-",Regular Need,4
+198,Sai Hospital 199,AB+,Regular Need,2
+199,Sai Hospital 200,"O+, A+",Regular Need,3
