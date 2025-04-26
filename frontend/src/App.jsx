@@ -13,6 +13,8 @@ function App() {
         <Route path="/" element={<RakthveerLandingPage/>}/>
         <Route path="/login" element={<DonorLogin/>}/>
         <Route path="/main" element={<BloodDonationPlatform/>}/>
+        <Route path="/orgLogin" element={<OrgLogin/>}/>
+        <Route path="/orgMain" element={<BloodDonationPlatform/>}/>
       </Routes>
     </>
   )

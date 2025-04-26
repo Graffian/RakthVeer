@@ -5,8 +5,10 @@ import Header from "./Header";
 import InfoCard from "./InfoCard";
 import LoginButton from "./LoginButton";
 import Footer from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 function RakthveerLandingPage() {
+  const navigate = useNavigate()
   const [isEnglish, setIsEnglish] = useState(true);
 
   const toggleLanguage = () => {
@@ -72,8 +74,8 @@ function RakthveerLandingPage() {
           </div>
 
           <div className={styles.buttonContainer}>
-            <LoginButton primary mainText="Login as Donor" />
-            <LoginButton mainText="Login as Organization" />
+            <LoginButton onClick={()=>{navigate("/login")}} primary mainText="Login as Donor" />
+            <LoginButton onClick={()=>{navigate("/orgLogin")}} mainText="Login as Organization" />
           </div>
         </section>
       </main>

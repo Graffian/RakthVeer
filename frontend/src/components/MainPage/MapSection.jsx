@@ -6,7 +6,7 @@ function MapSection() {
   const [userLocation, setUserLocation] = useState(null);
   const [locationStatus, setLocationStatus] = useState("loading");
   const [mapUrl, setMapUrl] = useState(
-    "https://www.openstreetmap.org/export/embed.html?bbox=85.8019,20.2399,85.9019,20.3399&layer=mapnik",
+    "https://www.openstreetmap.org/export/embed.html?bbox=85.8019,20.2399,85.9019,20.3399&layer=mapnik"
   );
 
   useEffect(() => {
@@ -23,20 +23,34 @@ function MapSection() {
         setUserLocation({ latitude, longitude });
         setLocationStatus("success");
 
+        // Send location to your API
+        fetch("https://your-api.com/location", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ latitude, longitude }),
+        }).then((res) => {
+          if (!res.ok) {
+            console.error("Failed to send location");
+          }
+        }).catch((err) => {
+          console.error("Error sending location:", err);
+        });
+
         // Create a bounding box around the user's location
-        const delta = 0.05; // Approximately 5km depending on latitude
+        const delta = 0.05;
         const bbox = `${longitude - delta},${latitude - delta},${longitude + delta},${latitude + delta}`;
 
-        // Update map URL with user's location and marker
         setMapUrl(
-          `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${latitude},${longitude}`,
+          `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${latitude},${longitude}`
         );
       },
       (error) => {
         console.error("Error getting location:", error);
         setLocationStatus("error");
       },
-      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
     );
   }, []);
 
