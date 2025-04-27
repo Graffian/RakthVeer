@@ -6,186 +6,7 @@ import TopDonorsSection from "./TopDonorsSection";
 function HospitalSection({ onHospitalSelect }) {
   // Hospital data with coordinates
   const [hospitals] = useState([
-    {
-      name: "CARE Hospitals",
-      location: "Chandrasekharpur Bhubaneswar",
-      latitude: 20.3625441,
-      longitude: 85.7569507,
-    },
-    {
-      name: "Apollo Hospitals",
-      location: "Sainik school Rd Bhubaneswar",
-      latitude: 20.305959,
-      longitude: 85.831954,
-    },
-    {
-      name: "Manipal Hospitals",
-      location: "Khandagiri Bhubaneswar",
-      latitude: 20.260342,
-      longitude: 85.777573,
-    },
-    {
-      name: "Utkal Hospitals",
-      location: "Neeladri vihar Bhubanesawr",
-      latitude: 20.322777,
-      longitude: 85.800459,
-    },
-    {
-      name: "Vivekananda Hospital",
-      location: "Baramunda Bhubaneswar",
-      latitude: 20.279354,
-      longitude: 85.800294,
-    },
-    {
-      name: "SUM Ultimate Medicare",
-      location: "Bhubaneswar",
-      latitude: 20.283212,
-      longitude: 85.772535,
-    },
-    {
-      name: "Health Village Hospital",
-      location: "Nayapalli Bhubaneswar",
-      latitude: 20.29499,
-      longitude: 85.816654,
-    },
-    {
-      name: "Aditya Ashwini Hospital",
-      location: "Chandrasekharpur Bhubaneswar",
-      latitude: 20.330178,
-      longitude: 85.82242,
-    },
-    {
-      name: "All India Institute of Medical Sciences",
-      location: "Patrapada Bhubaneswar",
-      latitude: 20.231963,
-      longitude: 85.774979,
-    },
-    {
-      name: "Kalinga Institute Of Medical Sciences(KIMS)",
-      location: "KIIT Rd Bhubaneswar",
-      latitude: 20.352081,
-      longitude: 85.813404,
-    },
-    {
-      name: "Sunshine Hospital",
-      location: "Laxmisagar Bhubaneswar",
-      latitude: 20.269336,
-      longitude: 85.848621,
-    },
-    {
-      name: "Neelachal Hospital Pvt Ltd",
-      location: "Unit 3 Bhubaneswar",
-      latitude: 20.27085,
-      longitude: 85.845395,
-    },
-    {
-      name: "Blue Wheel Hospital",
-      location: "Mancheswar Industrial Estate Bhubaneswar",
-      latitude: 20.3095962,
-      longitude: 85.8518169,
-    },
-    {
-      name: "Sparsh Hospitals & Critical Care Pvt. Ltd.",
-      location: "Saheed Nagar Bhubaneswar",
-      latitude: 20.2953949,
-      longitude: 85.8407094,
-    },
-    {
-      name: "Kar Clinic & Hospital",
-      location: "Unit 4 Bhubaneswar",
-      latitude: 20.2772142,
-      longitude: 85.8308099,
-    },
-    {
-      name: "Hi-Tech Hospital & Medical College",
-      location: "Rasulgarh Bhubaneswar",
-      latitude: 20.3006702,
-      longitude: 85.8745984,
-    },
-    {
-      name: "Trinity Neuro Hospital & Trauma Centre",
-      location: "Vani Vihar Bhubaneswar",
-      latitude: 20.2949488,
-      longitude: 85.8371871,
-    },
-    {
-      name: "Shree Hospitals",
-      location: "Lewis Rd BJB Nagar Bhubaneswar",
-      latitude: 20.2483142,
-      longitude: 85.8388699,
-    },
-    {
-      name: "ESI Hospital",
-      location: "IRC Village Bhubaneswar",
-      latitude: 20.3003585,
-      longitude: 85.818699,
-    },
-    {
-      name: "PGIMER & Capital Hospital",
-      location: "Unit 6 Bhubaneswar",
-      latitude: 20.2600304,
-      longitude: 85.8206853,
-    },
-    {
-      name: "SimpleeKare Health",
-      location: "IRC Village Bhubaneswar",
-      latitude: 20.2917913,
-      longitude: 85.8060073,
-    },
-    {
-      name: "Maxfort Hospital",
-      location: "Chandrasekharpur Bhubaneswar",
-      latitude: 20.3397454,
-      longitude: 85.8184969,
-    },
-    {
-      name: "Maternity Care Hospital",
-      location: "Saheed Nagar Bhubaneswar",
-      latitude: 20.2942902,
-      longitude: 85.8414937,
-    },
-    {
-      name: "Central Hospital East Coast Railway",
-      location: "Mancheswar Bhubaneswar",
-      latitude: 20.3211436,
-      longitude: 85.8330069,
-    },
-    {
-      name: "Baidyanath Memorial Hospital",
-      location: "Kanan Vihar Bhubaneswar",
-      latitude: 20.3422987,
-      longitude: 85.8204354,
-    },
-    {
-      name: "Narayani Hospital",
-      location: "Chandrasekharpur Bhubaneswar",
-      latitude: 20.3216427,
-      longitude: 85.8150689,
-    },
-    {
-      name: "Capital Cure Healthcare",
-      location: "Kanan Vihar Bhubaneswar",
-      latitude: 20.3387581,
-      longitude: 85.8204056,
-    },
-    {
-      name: "Ananya Hospital",
-      location: "BJB Nagar Bhubaneswar",
-      latitude: 20.2590679,
-      longitude: 85.8403809,
-    },
-    {
-      name: "Jagannath Hospital",
-      location: "Saheed Nagar Bhubaneswar",
-      latitude: 20.2899794,
-      longitude: 85.8345686,
-    },
-    {
-      name: "Ahalya Hospital",
-      location: "Patharagadia Bhubaneswar",
-      latitude: 20.3624486,
-      longitude: 85.7878508,
-    },
+    // ... (keep your existing hospital data)
   ]);
 
   // Form state
@@ -200,10 +21,11 @@ function HospitalSection({ onHospitalSelect }) {
 
   // Form submission state
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null); // null, 'success', 'error'
+  const [submitStatus, setSubmitStatus] = useState(null); 
   const [errorMessage, setErrorMessage] = useState("");
-
-  const [responseMessage, setResponseMessage] = useState(""); // <-- to store response
+  const [showSearchDonorButton, setShowSearchDonorButton] = useState(false);
+  const [potentialDonors, setPotentialDonors] = useState([]);
+  const [searchingDonors, setSearchingDonors] = useState(false);
 
   // Listen for clear hospital selection event
   useEffect(() => {
@@ -234,29 +56,7 @@ function HospitalSection({ onHospitalSelect }) {
 
   // Validate form
   const validateForm = () => {
-    // Check if required fields are filled
-    if (!formData.name.trim()) return "Name is required";
-    if (!formData.contactNumber.trim()) return "Contact number is required";
-    if (!formData.bloodGroup || formData.bloodGroup === "Select Blood Group")
-      return "Blood group is required";
-    if (!formData.unitsRequired) return "Units required is required";
-    if (!formData.hospitalName.trim()) return "Hospital name is required";
-
-    // Validate phone number format
-    const phoneRegex = /^\d{10}$/;
-    if (!phoneRegex.test(formData.contactNumber.trim())) {
-      return "Please enter a valid 10-digit contact number";
-    }
-
-    // Validate units required is a positive number
-    if (
-      isNaN(formData.unitsRequired) ||
-      parseInt(formData.unitsRequired) <= 0
-    ) {
-      return "Units required must be a positive number";
-    }
-
-    return null; // No errors
+    // ... (keep your existing validation logic)
   };
 
   // Handle form submission
@@ -266,6 +66,7 @@ function HospitalSection({ onHospitalSelect }) {
     // Reset previous submission status
     setSubmitStatus(null);
     setErrorMessage("");
+    setShowSearchDonorButton(false);
 
     // Validate form
     const validationError = validateForm();
@@ -296,16 +97,16 @@ function HospitalSection({ onHospitalSelect }) {
 
       // Handle successful submission
       setSubmitStatus("success");
+      setShowSearchDonorButton(true);
 
-      // Reset form after successful submission
-      setFormData({
+      // Reset form after successful submission (except blood group and hospital)
+      setFormData(prev => ({
+        ...prev,
         name: "",
         contactNumber: "",
-        bloodGroup: "",
         unitsRequired: "",
-        hospitalName: "",
-        reason: "",
-      });
+        reason: ""
+      }));
 
       console.log("Form submitted successfully:", data);
     } catch (error) {
@@ -319,10 +120,48 @@ function HospitalSection({ onHospitalSelect }) {
     }
   };
 
+  // Handle search for donors
+  const handleSearchDonors = async () => {
+    if (!formData.bloodGroup || !formData.hospitalName) {
+      setSubmitStatus("error");
+      setErrorMessage("Blood group and hospital are required to search donors");
+      return;
+    }
+
+    setSearchingDonors(true);
+    setSubmitStatus(null);
+
+    try {
+      // Replace with your actual API endpoint for searching donors
+      const response = await fetch(`http://127.0.0.1:8000/api/donors/search?bloodGroup=${formData.bloodGroup}&hospital=${formData.hospitalName}`);
+      
+      if (!response.ok) {
+        throw new Error(`Server responded with status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setPotentialDonors(data.donors || []);
+      
+      if (data.donors && data.donors.length > 0) {
+        setSubmitStatus("success");
+      } else {
+        setSubmitStatus("info");
+        setErrorMessage("No matching donors found. Our team will contact you soon.");
+      }
+    } catch (error) {
+      console.error("Error searching donors:", error);
+      setSubmitStatus("error");
+      setErrorMessage("Failed to search donors. Please try again later.");
+    } finally {
+      setSearchingDonors(false);
+    }
+  };
+
   // Handle hospital card click
   const handleHospitalClick = (hospital) => {
     if (onHospitalSelect) {
       onHospitalSelect(hospital);
+      setFormData(prev => ({ ...prev, hospitalName: hospital.name }));
 
       // Scroll to map
       const mapElement = document.querySelector(`.${styles.mapContainer}`);
@@ -331,11 +170,6 @@ function HospitalSection({ onHospitalSelect }) {
       }
     }
   };
-
-  
-
-  
-
 
   return (
     <section className={styles.leftColumnContainer}>
@@ -346,7 +180,7 @@ function HospitalSection({ onHospitalSelect }) {
       <section className={styles.requestFormContainer}>
         <h3 className={styles.formTitle}>Request Blood</h3>
 
-        {submitStatus === "success" && (
+        {submitStatus === "success" && !potentialDonors.length && (
           <div className={styles.successMessage}>
             <p>
               Your blood request has been submitted successfully! Our team will
@@ -361,6 +195,28 @@ function HospitalSection({ onHospitalSelect }) {
           </div>
         )}
 
+        {submitStatus === "info" && (
+          <div className={styles.infoMessage}>
+            <p>{errorMessage}</p>
+          </div>
+        )}
+
+        {potentialDonors.length > 0 && (
+          <div className={styles.donorsList}>
+            <h4>Potential Donors:</h4>
+            <ul>
+              {potentialDonors.map((donor, index) => (
+                <li key={index}>
+                  <p>Name: {donor.name}</p>
+                  <p>Contact: {donor.contactNumber}</p>
+                  <p>Last Donation: {donor.lastDonationDate}</p>
+                  <p>Distance: {donor.distance} km</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
         <form className={styles.requestForm} onSubmit={handleSubmit}>
           <input
             placeholder="Your Name"
@@ -368,6 +224,7 @@ function HospitalSection({ onHospitalSelect }) {
             name="name"
             value={formData.name}
             onChange={handleInputChange}
+            required
           />
           <input
             placeholder="Contact Number"
@@ -375,14 +232,16 @@ function HospitalSection({ onHospitalSelect }) {
             name="contactNumber"
             value={formData.contactNumber}
             onChange={handleInputChange}
+            required
           />
           <select
             className={styles.formSelect}
             name="bloodGroup"
             value={formData.bloodGroup}
             onChange={handleInputChange}
+            required
           >
-            <option>Select Blood Group</option>
+            <option value="">Select Blood Group</option>
             <option>A+</option>
             <option>A-</option>
             <option>B+</option>
@@ -400,6 +259,7 @@ function HospitalSection({ onHospitalSelect }) {
             value={formData.unitsRequired}
             onChange={handleInputChange}
             min="1"
+            required
           />
           <input
             placeholder="Hospital Name"
@@ -407,6 +267,7 @@ function HospitalSection({ onHospitalSelect }) {
             name="hospitalName"
             value={formData.hospitalName}
             onChange={handleInputChange}
+            required
           />
           <textarea
             placeholder="Reason for requirement"
@@ -419,10 +280,20 @@ function HospitalSection({ onHospitalSelect }) {
             className={`${styles.submitButton} ${styles.builder8dd3a2832d5d43eb9529e7352f6b4d5d}`}
             type="submit"
             disabled={isSubmitting}
-            
           >
             {isSubmitting ? "Submitting..." : "Submit Request"}
           </button>
+          
+          {showSearchDonorButton && (
+            <button
+              type="button"
+              className={`${styles.submitButton} ${styles.searchDonorButton}`}
+              onClick={handleSearchDonors}
+              disabled={searchingDonors}
+            >
+              {searchingDonors ? "Searching..." : "Search Donors"}
+            </button>
+          )}
         </form>
       </section>
 
@@ -433,48 +304,7 @@ function HospitalSection({ onHospitalSelect }) {
             key={index}
             onClick={() => handleHospitalClick(hospital)}
           >
-            <div>
-              <h3 className={styles.hospitalName}>{hospital.name}</h3>
-              <p className={styles.hospitalLocation}>{hospital.location}</p>
-            </div>
-            <div className={styles.hospitalStatusContainer}>
-              <div className={styles.statusWrapper}>
-                <div className={styles.bloodNeedBadge}>Needed: A+, O-</div>
-                <div
-                  className={styles.urgencyBadge}
-                  style={{
-                    backgroundColor:
-                      index % 3 === 0 ? "rgb(220, 53, 69)" : "rgb(40, 167, 69)",
-                  }}
-                >
-                  {index % 3 === 0 ? "⚡ URGENT" : "Regular Need"}
-                </div>
-              </div>
-              <div className={styles.unitsInfo}>
-                <span>Units needed: </span>
-                <span>{index % 3 === 0 ? "5 units" : "2 units"}</span>
-              </div>
-            </div>
-            <button
-              className={styles.getDirectionsBtn}
-              onClick={(e) => {
-                e.stopPropagation();
-                handleHospitalClick(hospital);
-              }}
-            >
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                style={{ marginRight: "5px" }}
-              >
-                <polygon points="3 11 22 2 13 21 11 13 3 11" />
-              </svg>
-              Get Directions
-            </button>
+            {/* ... (keep your existing hospital card JSX) */}
           </article>
         ))}
       </div>
